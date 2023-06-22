@@ -1,4 +1,11 @@
 import logging
+import os
+
+if os.getenv("LOG_LEVEL") is None:
+    logging.basicConfig(level=logging.WARNING)
+else:
+    logging.basicConfig(level=int(os.getenv("LOG_LEVEL")))
+
 from importlib import metadata
 from importlib.metadata import PackageNotFoundError
 
@@ -12,16 +19,16 @@ except PackageNotFoundError:
     logging.warning("Package not installed")
     version = "0"
 
-
 app = typer.Typer(
     no_args_is_help=True,
     epilog=f"Version: {version} \n Project: https://github.com/Jelloeater/gatus_config",
 )
 
 
-def run():
-    logging.debug("hello world")
+@app.command()
+def main():
+    logging.warning("hello world")
 
 
 if __name__ == "__main__":
-    app()
+    typer.run(main)
