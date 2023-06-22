@@ -1,6 +1,6 @@
 version: '3'
 vars:
-    BUILD_DIR: gatus_config
+    BUILD_DIR: fedi_gatus
 tasks:
     default:
         - task: test
@@ -9,18 +9,20 @@ tasks:
         interactive: false
         cmds:
             - poetry install
-            - task: commit
+            - task: security
             - task: pytest
     commit:
-        - task: format
-        - task: security
-        - task: docs
+        # Run all actions at same time
+        deps:
+            -   task: format
+            -   task: security
+            -   task: docs
 
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
-        - poetry run pre-commit install
+        - poetry install
     clean:
         - rm -rf dist
         - poetry cache clear _default_cache --all  --no-interaction
@@ -55,7 +57,6 @@ tasks:
             - rm -rf docs
             - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
-            - poetry run mdformat docs
             - git add docs
     install:
         - pip install . --upgrade

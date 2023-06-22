@@ -1,0 +1,18 @@
+ui:
+  title: TITLE GOES HERE
+  description: FILL ME IN FOR SEARCH INDEXING
+  header: PAGE HEADER
+  logo: https://join-lemmy.org/static/assets/images/lemmy.svg
+  link: https://join-lemmy.org
+  buttons:
+  - name: Join Lemmy
+    link: https://join-lemmy.org
+
+default-endpoint: &defaults
+  interval: 30s
+  client:
+    insecure: true
+    timeout: 30s
+  conditions:
+    - "[STATUS] == 200"
+

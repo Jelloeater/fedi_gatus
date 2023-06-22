@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gatus_config"
+name = "fedi_gatus"
 version = "0.1.0"
 description = ""
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
@@ -14,12 +14,13 @@ readme = "README.md"
 #]
 
 [tool.poetry.scripts]
-gatus_config = "gatus_config.__main__:app"
+gatus_config = "fedi_gatus.__main__:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 typer = "*"
-
+pyyaml = "*"
+ruamel-yaml = "^0.17.32"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
@@ -71,17 +72,11 @@ exclude-entropy-patterns = [
 ]
 
 [tool.poetry.group.test.dependencies]
-httpx = "*"
-setuptools = "*"
-pytest = "*"
-pytest-cov = "*"
-python-dotenv = "*"
-
-[tool.poetry.group.dev.dependencies]
 setuptools = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-pycharm = "*"
+python-dotenv = "*"
 pre-commit = "*"
 vulture = "*"
 isort = "*"
