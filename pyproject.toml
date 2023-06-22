@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gatus_config"
+name = "fedi_gatus"
 version = "0.1.0"
 description = ""
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
@@ -14,7 +14,7 @@ readme = "README.md"
 #]
 
 [tool.poetry.scripts]
-gatus_config = "gatus_config.__main__:app"
+gatus_config = "fedi_gatus.__main__:app"
 
 [tool.poetry.dependencies]
 python = "^3.10"

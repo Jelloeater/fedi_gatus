@@ -12,15 +12,16 @@ tasks:
             - task: commit
             - task: pytest
     commit:
-        - task: format
-        - task: security
-        - task: docs
+        # Run all actions at same time
+        deps:
+            -   task: format
+            -   task: security
+            -   task: docs
 
     setup:
         - python3 -m pip install pipx
         - python3 -m pipx ensurepath
         - pipx install poetry
-        - poetry run pre-commit install
     clean:
         - rm -rf dist
         - poetry cache clear _default_cache --all  --no-interaction
