@@ -1,0 +1,61 @@
+version: '3'
+vars:
+    BUILD_DIR: gatus_config
+tasks:
+    default:
+        - task: test
+    test:
+        silent: false
+        interactive: false
+        cmds:
+            - poetry install
+            - task: commit
+            - task: pytest
+    commit:
+        - task: format
+        - task: security
+        - task: docs
+
+    setup:
+        - python3 -m pip install pipx
+        - python3 -m pipx ensurepath
+        - pipx install poetry
+        - poetry run pre-commit install
+    clean:
+        - rm -rf dist
+        - poetry cache clear _default_cache --all  --no-interaction
+        - poetry cache clear PyPI --all  --no-interaction
+        - poetry check
+        - py3clean .
+    security:
+        - poetry run whispers {{.BUILD_DIR}} # Check for security issues
+        - poetry run bandit --silent -r {{.BUILD_DIR}}
+        - poetry run tartufo scan-local-repo .
+    pytest:
+        silent: false
+        interactive: false
+        dotenv: [prod.env]
+        cmds:
+            - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
+            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+#            - poetry run mypy --install-types --non-interactive
+#            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
+            - poetry run pytest --cov --cov-fail-under=75 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
+    format:
+        silent: false
+        interactive: false
+        cmds:
+            - poetry run isort --atomic . # Sort imports
+            - poetry run black . # Format code
+            - poetry run flake8
+    docs:
+        silent: false
+        interactive: false
+        cmds:
+            - rm -rf docs
+            - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
+            - poetry run pyreverse {{.BUILD_DIR}} -d docs
+            - poetry run mdformat docs
+            - git add docs
+    install:
+        - pip install . --upgrade

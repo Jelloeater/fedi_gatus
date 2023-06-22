@@ -1,0 +1,7 @@
+digraph "packages" {
+rankdir=BT
+charset="utf-8"
+"gatus_config" [color="black", label=<gatus_config>, shape="box", style="solid"];
+"gatus_config.__main__" [color="black", label=<gatus_config.__main__>, shape="box", style="solid"];
+"gatus_config.config_gen" [color="black", label=<gatus_config.config_gen>, shape="box", style="solid"];
+}

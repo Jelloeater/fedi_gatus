@@ -1,0 +1,11 @@
+# See https://pre-commit.com/ for usage and config
+repos:
+- repo: local
+  hooks:
+  - id: test
+    name: Commit
+    stages: [commit]
+    language: system
+    entry: task commit
+    pass_filenames: false
+    verbose: false
