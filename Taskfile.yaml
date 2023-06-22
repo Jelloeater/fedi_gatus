@@ -1,6 +1,6 @@
 version: '3'
 vars:
-    BUILD_DIR: gatus_config
+    BUILD_DIR: fedi_gatus
 tasks:
     default:
         - task: test

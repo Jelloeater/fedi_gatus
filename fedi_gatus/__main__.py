@@ -11,7 +11,7 @@ from importlib.metadata import PackageNotFoundError
 
 import typer
 
-app_name = "gatus_config"
+app_name = "fedi_gatus"
 
 try:
     version = metadata.version(app_name)
