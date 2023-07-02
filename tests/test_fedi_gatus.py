@@ -4,9 +4,9 @@ import dotenv
 
 dotenv.load_dotenv()
 
-import fedi_gatus.config_gen
+
 from fedi_gatus import __main__ as cli
-from fedi_gatus import config_gen
+from fedi_gatus import config_gen, data
 
 
 class TestConfig:
@@ -23,12 +23,15 @@ class TestConfig:
 
     @classmethod
     def test_ui_gen(cls):
-        result = fedi_gatus.config_gen.generate_ui()
+        result = config_gen.generate_ui()
         logging.info(result)
         assert result is not None
         return result
 
     def test_generate_full_config(cls):
-        x = fedi_gatus.config_gen.generate_full_config()
+        x = config_gen.generate_full_config()
         logging.debug(x)
         assert x is not None
+
+    def test_get_data(self):
+        data.generate_top_instances()
