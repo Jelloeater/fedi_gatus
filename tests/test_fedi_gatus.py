@@ -1,6 +1,7 @@
 import logging
 
 import dotenv
+import pytest
 
 dotenv.load_dotenv()
 
@@ -33,5 +34,6 @@ class TestConfig:
         logging.debug(x)
         assert x is not None
 
+    # @pytest.mark.skip(reason="This takes a long time to run right now")
     def test_get_data(self):
-        data.generate_top_instances()
+        data.generate_top_instances() #skip
