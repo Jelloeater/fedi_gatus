@@ -9,8 +9,6 @@ endpoints:
     url: https://example.com
     <<: *defaults
 """
-obj = yaml.safe_load(x)
-logging.debug(obj)
 
 
 class Endpoint:
@@ -20,14 +18,13 @@ class Endpoint:
     conditions = [str]
 
 
-
-yamlo = []
-x = Endpoint()
-x.name = "Lemmy World2"
-x.url = "cool site"
-x.interval = 20
-x.conditions = ["[STATUS] == 404"]
-yamlo.append(x.__dict__)
-e = {"endpoints" : x.__dict__}
-out = yaml.dump(e,default_flow_style=False)
-print(out)
+def generate_endpoints(endpoint_list: [dict]):
+    list_out = []
+    for i in endpoint_list:
+        o = Endpoint()
+        o.name = i.get('name')
+        o.url = i.get('url')
+        o.interval = 20
+        list_out.append(vars(o))
+    e = {"endpoints": list_out}
+    return yaml.dump(e, default_flow_style=False, sort_keys=False)
