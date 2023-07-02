@@ -1,0 +1,7 @@
+endpoints:
+- name: Lemmy World
+  url: https://lemmy.world
+  interval: 20
+- name: Lemmy ML
+  url: https://lemmy.ml
+  interval: 20

@@ -1,0 +1,8 @@
+digraph "packages" {
+rankdir=BT
+charset="utf-8"
+"fedi_gatus" [color="black", label=<fedi_gatus>, shape="box", style="solid"];
+"fedi_gatus.__main__" [color="black", label=<fedi_gatus.__main__>, shape="box", style="solid"];
+"fedi_gatus.config_gen" [color="black", label=<fedi_gatus.config_gen>, shape="box", style="solid"];
+"fedi_gatus.data" [color="black", label=<fedi_gatus.data>, shape="box", style="solid"];
+}
