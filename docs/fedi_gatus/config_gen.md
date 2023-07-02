@@ -9,6 +9,10 @@ Functions
 :   
 
     
+`generate_full_config()`
+:   
+
+    
 `generate_ui()`
 :   
 

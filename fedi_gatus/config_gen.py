@@ -1,5 +1,7 @@
 import yaml
 
+import fedi_gatus.data
+
 # example template
 x = """
 endpoints:
@@ -42,3 +44,9 @@ def generate_ui():
     result = Template(template.read()).safe_substitute({"email": os.getenv("EMAIL")})
     template.close()
     return result
+
+
+def generate_full_config():
+    u = generate_ui()
+    e = generate_endpoints(fedi_gatus.data.generate_top_instances())
+    return u + e
