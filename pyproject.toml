@@ -21,6 +21,9 @@ python = "^3.10"
 typer = "*"
 pyyaml = "*"
 ruamel-yaml = "^0.17.32"
+peewee = "^3.16.0"
+datetime = "^5.1"
+
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
