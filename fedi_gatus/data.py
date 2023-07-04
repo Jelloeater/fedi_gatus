@@ -20,7 +20,6 @@ def get_raw_data():
 
 
 def generate_top_instances():
-
     instances = []
     i = {"name": "Lemmy World", "url": "https://lemmy.world"}  # TODO Remove demo data
     instances.append(i)

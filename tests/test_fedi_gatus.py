@@ -36,4 +36,4 @@ class TestConfig:
 
     # @pytest.mark.skip(reason="This takes a long time to run right now")
     def test_get_data(self):
-        data.generate_top_instances() #skip
+        data.generate_top_instances()  # skip
