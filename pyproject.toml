@@ -23,7 +23,8 @@ pyyaml = "*"
 ruamel-yaml = "^0.17.32"
 peewee = "^3.16.0"
 datetime = "^5.1"
-
+fastapi ="*"
+uvicorn ={version="*", extras = ["standard"]}
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

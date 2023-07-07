@@ -1,4 +1,14 @@
 version: '3.7'
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  web:
+    external: false
+  internal:
+    external: false
+    driver: bridge
 services:
   #Monitor
   gatus:
@@ -23,15 +33,17 @@ services:
     networks:
       - web
       - internal
-volumes:
-  caddy_data:
-  caddy_config:
 
-networks:
-  web:
-    external: false
-  internal:
-    external: false
-    driver: bridge
+  fedi_api:
+    env_file: .env
+#    restart: on-failure
+    image: fedi_api
+    environment:
+      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: [ "python3", "fedi_api/api.py" ]
 
-
+    ports:
+      - "0.0.0.0:8080:8080"
