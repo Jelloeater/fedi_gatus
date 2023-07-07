@@ -8,7 +8,6 @@ from fastapi import FastAPI
 from starlette import status
 from starlette.responses import JSONResponse, RedirectResponse
 
-
 if os.getenv("LOG_LEVEL") is None:
     logging.basicConfig(level=logging.WARNING)
 else:
