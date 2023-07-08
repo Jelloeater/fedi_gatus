@@ -16,7 +16,7 @@ services:
     ports:
       - 80:8080
     volumes:
-      - $PWD/gatus-gatus-config.yaml:/config/gatus-config.yaml
+      - $PWD/gatus-config.yaml:/config/gatus-config.yaml
 
   # Caddy Proxy
   caddy:
@@ -56,4 +56,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - $PWD/gatus-config.yaml:/app/gatus-config.yaml
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
