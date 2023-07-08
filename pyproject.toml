@@ -25,6 +25,7 @@ peewee = "^3.16.0"
 datetime = "^5.1"
 fastapi ="*"
 uvicorn ={version="*", extras = ["standard"]}
+starlette = "^0.28.0"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

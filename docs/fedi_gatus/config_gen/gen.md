@@ -1,5 +1,5 @@
-Module fedi_gatus.config_gen.generator
-======================================
+Module fedi_gatus.config_gen.gen
+================================
 
 Functions
 ---------

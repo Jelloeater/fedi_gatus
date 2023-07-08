@@ -59,4 +59,6 @@ tasks:
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - git add docs
     install:
-        - pip install . --upgrade
+      - pip install . --upgrade
+    build:
+      - docker-compose build --no-cache --pull

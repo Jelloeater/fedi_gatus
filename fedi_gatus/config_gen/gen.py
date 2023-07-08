@@ -2,14 +2,6 @@ import yaml
 
 from fedi_gatus.config_gen import data
 
-# example template
-x = """
-endpoints:
-  - name: SITE NAME HERE
-    url: https://example.com
-    <<: *defaults
-"""
-
 
 class Endpoint:
     name = str
