@@ -1,6 +1,6 @@
 import yaml
 
-import data
+from fedi_gatus.config_gen import data
 
 # example template
 x = """

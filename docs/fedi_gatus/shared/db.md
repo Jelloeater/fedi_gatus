@@ -1,5 +1,5 @@
-Module fedi_gatus.db
-====================
+Module fedi_gatus.shared.db
+===========================
 
 Functions
 ---------
@@ -11,13 +11,13 @@ Functions
 Classes
 -------
 
-`Data(*args, **kwargs)`
+`DataAccess(*args, **kwargs)`
 :   
 
     ### Ancestors (in MRO)
 
-    * fedi_gatus.db.DataModel
-    * fedi_gatus.db.ModelBase
+    * fedi_gatus.shared.db.DataModel
+    * fedi_gatus.shared.db.ModelBase
     * peewee.Model
     * peewee._metaclass_helper_
     * peewee.Node
@@ -25,6 +25,9 @@ Classes
     ### Class variables
 
     `id`
+    :
+
+    `some_data`
     :
 
     `timestamp`
@@ -32,10 +35,10 @@ Classes
 
     ### Methods
 
-    `get(self, num_minutes_to_get: int) ‑> list`
-    :   Takes time range of past mins, and returns list of db rows w/ temp data
+    `get_single_record(self) ‑> dict`
+    :
 
-    `insert(self) ‑> None`
+    `insert(self, some_data: str) ‑> None`
     :
 
 `DataModel(*args, **kwargs)`
@@ -43,18 +46,21 @@ Classes
 
     ### Ancestors (in MRO)
 
-    * fedi_gatus.db.ModelBase
+    * fedi_gatus.shared.db.ModelBase
     * peewee.Model
     * peewee._metaclass_helper_
     * peewee.Node
 
     ### Descendants
 
-    * fedi_gatus.db.Data
+    * fedi_gatus.shared.db.DataAccess
 
     ### Class variables
 
     `id`
+    :
+
+    `some_data`
     :
 
     `timestamp`
@@ -71,7 +77,7 @@ Classes
 
     ### Descendants
 
-    * fedi_gatus.db.DataModel
+    * fedi_gatus.shared.db.DataModel
 
     ### Class variables
 

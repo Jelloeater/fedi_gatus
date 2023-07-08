@@ -1,5 +1,5 @@
-Module fedi_gatus.data
-======================
+Module fedi_gatus.config_gen.data
+=================================
 
 Functions
 ---------

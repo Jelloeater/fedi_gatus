@@ -1,11 +1,11 @@
-Module fedi_gatus.config_gen
-============================
+Module fedi_gatus.config_gen.generator
+======================================
 
 Functions
 ---------
 
     
-`generate_endpoints(endpoint_list: [<class 'dict'>])`
+`Generate_endpoints(endpoint_list: [<class 'dict'>])`
 :   
 
     
