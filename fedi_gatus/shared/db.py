@@ -2,7 +2,7 @@ import datetime
 
 import peewee as p
 
-DB_NAME = "data.db"
+DB_NAME = "data.shared"
 
 
 def setup_db_connection():

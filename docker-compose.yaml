@@ -39,11 +39,11 @@ services:
 #    restart: on-failure
     image: fedi_api
     environment:
-      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
+      - PYTHONPATH="${PYTHONPATH}:/config_gen"
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: [ "python3", "fedi_api/api.py" ]
+    entrypoint: [ "python3", "api_server/api.py" ]
 
     ports:
       - "0.0.0.0:8080:8080"

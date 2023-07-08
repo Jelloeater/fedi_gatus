@@ -1,6 +1,6 @@
 import yaml
 
-import fedi_gatus.data
+import data
 
 # example template
 x = """
@@ -18,7 +18,7 @@ class Endpoint:
     conditions = [str]
 
 
-def generate_endpoints(endpoint_list: [dict]):
+def Generate_endpoints(endpoint_list: [dict]):
     list_out = []
     for i in endpoint_list:
         o = Endpoint()
@@ -48,5 +48,5 @@ def generate_ui():
 
 def generate_full_config():
     u = generate_ui()
-    e = generate_endpoints(fedi_gatus.data.generate_top_instances())
+    e = Generate_endpoints(data.generate_top_instances())
     return u + e

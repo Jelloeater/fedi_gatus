@@ -5,11 +5,17 @@
 
 ```mermaid
 flowchart
-docker_compose
---> caddy --serves--> gatus & api_server 
+docker_compose 
+--creates--> api_server & caddy & config_gen
 
-api_server --> db
-config_gen --server to monitor--> gatus
-docker_compose --> config_gen
-cron --> updater --> config_gen
+caddy 
+--serves--> gatus & api_server 
+
+
+api_server & config_gen 
+--uses--> db
+
+config_gen 
+--creates config for--> gatus
+
 ```
