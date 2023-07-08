@@ -1,7 +1,5 @@
 import yaml
 
-from fedi_gatus.config_gen import data
-
 
 class Endpoint:
     name = str
@@ -40,5 +38,14 @@ def generate_ui():
 
 def generate_full_config():
     u = generate_ui()
-    e = Generate_endpoints(data.generate_top_instances())
+    e = Generate_endpoints(generate_top_instances())
     return u + e
+
+
+def generate_top_instances():
+    # TODO This should be a DB call
+    instances = []
+    i = {"name": "Lemmy World", "url": "https://lemmy.world"}  # TODO Remove demo data
+    instances.append(i)
+
+    return instances

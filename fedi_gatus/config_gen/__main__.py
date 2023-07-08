@@ -1,3 +1,9 @@
 import logging
 
-logging.info("Config Gen Start")
+
+def main():
+    logging.info("Config Gen Start")
+
+
+if __name__ == "__main__":
+    main()

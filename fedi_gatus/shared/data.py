@@ -17,11 +17,3 @@ def get_raw_data():
         for i in rest_data["data"]:
             data.append(i)
     return data
-
-
-def generate_top_instances():
-    instances = []
-    i = {"name": "Lemmy World", "url": "https://lemmy.world"}  # TODO Remove demo data
-    instances.append(i)
-
-    return instances

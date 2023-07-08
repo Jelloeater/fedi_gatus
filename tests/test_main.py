@@ -2,6 +2,7 @@ import logging
 
 import dotenv
 
+import fedi_gatus.config_gen.__main__ as config_main
 from fedi_gatus.config_gen import gen
 
 dotenv.load_dotenv()
@@ -27,7 +28,5 @@ class TestConfig:
         logging.debug(x)
         assert x is not None
 
-    # @pytest.mark.skip(reason="This takes a long time to run right now")
-    # def test_get_data(self):
-    #     # TODO Fix Unit test
-    #     config_gen.generator.generate_full_config()
+    def test_config_worker(self):
+        config_main.main()
