@@ -47,7 +47,7 @@ services:
     ports:
       - "0.0.0.0:8080:8080"
 
-  config-gen:
+  config:
     env_file: .env
 #    restart: on-failure
     image: fedi_api
@@ -59,3 +59,14 @@ services:
     volumes:
       - $PWD/gatus-config.yaml:/app/gatus-config.yaml
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
+
+  updater:
+    env_file: .env
+#    restart: on-failure
+    image: fedi_api
+    environment:
+      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: [ "python3", "fedi_gatus/updater" ]

@@ -21,12 +21,9 @@ def Generate_endpoints(endpoint_list: [dict]):
 
 
 def generate_ui():
-    import logging
     import os
 
     SCRIPT_CUR_DIR = os.path.dirname(os.path.abspath(__file__))
-    logging.info(f"File_DIR={SCRIPT_CUR_DIR}")
-
     # Get Template
     from string import Template
 
