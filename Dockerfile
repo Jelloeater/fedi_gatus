@@ -31,7 +31,9 @@ COPY poetry.lock .
 RUN poetry install --no-interaction --no-root --without test
 COPY . .
 RUN tree /app
+#RUN pip install -e .
 # Create and switch to a new user
 RUN useradd --create-home appuser
 RUN chown appuser:appuser -R /app/
 USER appuser
+ENV PYTHONPATH "${PYTHONPATH}:/pl_worker"

@@ -40,8 +40,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
     entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
     ports:
       - "0.0.0.0:8080:8080"
@@ -49,8 +47,6 @@ services:
   config:
     env_file: .env
     image: fedi_api
-    environment:
-      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
     volumes:
       - $PWD/gatus-config.yaml:/app/gatus-config.yaml
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
@@ -61,6 +57,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
     entrypoint: [ "python3", "fedi_gatus/updater" ]
