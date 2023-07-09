@@ -20,12 +20,11 @@ gatus_config = "fedi_gatus.__main__:app"
 python = "^3.10"
 typer = "*"
 pyyaml = "*"
-ruamel-yaml = "^0.17.32"
-peewee = "^3.16.0"
-datetime = "^5.1"
-fastapi ="*"
-uvicorn ={version="*", extras = ["standard"]}
-starlette = "^0.28.0"
+ruamel-yaml = "*"
+peewee = "*"
+datetime = "*"
+fastapi = "0.96.0"
+uvicorn ={version="0.22.0", extras = ["standard"]}
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

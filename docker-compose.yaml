@@ -41,7 +41,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus/api_server"
+      - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
     entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
     ports:
       - "0.0.0.0:8080:8080"
