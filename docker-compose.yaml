@@ -57,7 +57,10 @@ services:
 
   updater:
     env_file: .env
-    image: fedi_api
+    image: fedi_updater
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       - PYTHONPATH="${PYTHONPATH}:/fedi_gatus"
     entrypoint: [ "python3", "fedi_gatus/updater" ]
