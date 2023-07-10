@@ -23,7 +23,7 @@ pyyaml = "*"
 ruamel-yaml = "*"
 peewee = "*"
 datetime = "*"
-fastapi = "0.96.0"
+fastapi = "0.100.0"
 uvicorn ={version="0.22.0", extras = ["standard"]}
 
 [tool.pytest.ini_options]
