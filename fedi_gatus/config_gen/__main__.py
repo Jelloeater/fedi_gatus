@@ -22,3 +22,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# TODO Add Pagerduty integration https://github.com/TwiN/gatus/blob/master/docs/pagerduty-integration-guide.md
