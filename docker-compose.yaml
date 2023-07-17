@@ -4,6 +4,7 @@ volumes:
   caddy_config:
   gatus_config:
     external: false
+  gatus_data:
 
 networks:
   web:
@@ -22,6 +23,7 @@ services:
       - 8888:8080
     volumes:
       - gatus_config:/config
+      - gatus_data:/data
 #  # Caddy Proxy
 #  caddy:
 #    env_file: .env

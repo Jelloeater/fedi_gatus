@@ -2,7 +2,7 @@ ui:
   title: Top Lemmy Instance Health Status
   description: Lemmy Status montoring. The nodes monitored on this page are generated dynamically based on ACTIVE user count.
   header: Public Instance Health / Statistics
-  logo: https://join-lemmy.org/static/assets/images/lemmy.svg
+  logo: https://upload.wikimedia.org/wikipedia/commons/9/93/Fediverse_logo_proposal.svg
   link: https://join-lemmy.org
   buttons:
   - name: Join Lemmy
@@ -15,3 +15,6 @@ ui:
     link: https://lemmyverse.net/communities
   - name: Contact me
     link: mailto:$email
+storage:
+  type: sqlite
+  path: /data/data.db

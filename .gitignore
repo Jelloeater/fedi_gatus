@@ -1,4 +1,5 @@
  tests/*.yaml  
+fedi_gatus/config_gen/config/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
