@@ -35,7 +35,7 @@ def generate_ui():
     # Get Template
     from string import Template
 
-    template = open(f"{SCRIPT_CUR_DIR}/ui.template.yaml", "r")
+    template = open(f"{SCRIPT_CUR_DIR}/base.template.yaml", "r")
     result = Template(template.read()).safe_substitute({"email": os.getenv("EMAIL")})
     template.close()
     return result
