@@ -62,3 +62,6 @@ tasks:
       - pip install . --upgrade
     build:
       - docker-compose build --no-cache --pull --progress=plain
+    run:
+      - docker-compose build
+      - docker-compose up

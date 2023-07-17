@@ -14,7 +14,15 @@ def Generate_endpoints(endpoint_list: [dict]):
         o = Endpoint()
         o.name = i.get("name")
         o.url = i.get("url")
-        o.interval = 20
+        o.interval = str(20) + 's'
+        o.conditions = '"[STATUS] == 200"'
+        # FIXME Need to fix formatting to output
+        # - name: monitoring
+        #   group: internal
+        #   url: "https://example.org/"
+        #   interval: 5m
+        #   conditions:
+        #     - "[STATUS] == 200"
         list_out.append(vars(o))
     e = {"endpoints": list_out}
     return yaml.dump(e, default_flow_style=False, sort_keys=False)

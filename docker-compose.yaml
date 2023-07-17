@@ -2,6 +2,8 @@ version: '3.7'
 volumes:
   caddy_data:
   caddy_config:
+  gatus_config:
+    external: false
 
 networks:
   web:
@@ -9,52 +11,54 @@ networks:
   internal:
     external: false
     driver: bridge
+
 services:
   #Monitor
   gatus:
+    depends_on:
+      - config
     image: twinproduction/gatus:latest
     ports:
-      - 80:8080
+      - 8888:8080
     volumes:
-      - $PWD/gatus-config.yaml:/config/gatus-config.yaml
+      - gatus_config:/config
+#  # Caddy Proxy
+#  caddy:
+#    env_file: .env
+#    image: caddy:latest
+#    restart: unless-stopped
+#    ports:
+#      - 443:443
+#      - 443:443/udp
+#    volumes:
+#    - $PWD/Caddyfile:/etc/caddy/Caddyfile
+#    - caddy_data:/data
+#    - caddy_config:/config
+#    networks:
+#      - web
+#      - internal
 
-  # Caddy Proxy
-  caddy:
-    env_file: .env
-    image: caddy:latest
-    restart: unless-stopped
-    ports:
-      - 443:443
-      - 443:443/udp
-    volumes:
-    - $PWD/Caddyfile:/etc/caddy/Caddyfile
-    - caddy_data:/data
-    - caddy_config:/config
-    networks:
-      - web
-      - internal
-
-  api:
-    env_file: .env
-    image: fedi_api
-    build:
-      context: .
-      dockerfile: Dockerfile
-    entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
-    ports:
-      - "0.0.0.0:8080:8080"
+#  api:
+#    env_file: .env
+#    image: fedi_api
+#    entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
+#    ports:
+#      - "0.0.0.0:8080:8080"
 
   config:
     env_file: .env
     image: fedi_api
-    volumes:
-      - $PWD/gatus-config.yaml:/app/gatus-config.yaml
-    entrypoint: [ "python3", "fedi_gatus/config_gen" ]
-
-  updater:
-    env_file: .env
-    image: fedi_updater
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: [ "python3", "fedi_gatus/updater" ]
+    volumes:
+      - gatus_config:/app/fedi_gatus/config_gen/config
+    entrypoint: [ "python3", "fedi_gatus/config_gen" ]
+
+#  updater:
+#    env_file: .env
+#    image: fedi_updater
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    entrypoint: [ "python3", "fedi_gatus/updater" ]

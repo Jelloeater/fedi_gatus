@@ -36,4 +36,4 @@ RUN tree /app
 RUN useradd --create-home appuser
 RUN chown appuser:appuser -R /app/
 USER appuser
-ENV PYTHONPATH "${PYTHONPATH}:/pl_worker"
+ENV PYTHONPATH "${PYTHONPATH}:/fedi_gatus"
