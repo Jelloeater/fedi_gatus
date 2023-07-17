@@ -14,7 +14,7 @@ def Generate_endpoints(endpoint_list: [dict]):
         o = Endpoint()
         o.name = i.get("name")
         o.url = i.get("url")
-        o.interval = str(20) + 's'
+        o.interval = str(20) + "s"
         o.conditions = '"[STATUS] == 200"'
         # FIXME Need to fix formatting to output
         # - name: monitoring

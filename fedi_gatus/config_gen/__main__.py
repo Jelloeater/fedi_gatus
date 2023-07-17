@@ -19,7 +19,6 @@ def main():
     print(path)
     if not os.path.exists(path):
         os.makedirs(path)
-    os.system('tree')
     with open(f"{path}/config.yaml", "w") as f:
         f.write(str(top))
 
