@@ -16,5 +16,5 @@ ui:
   - name: Contact me
     link: mailto:$email
 storage:
-  type: sqlite
-  path: /data/data.db
+  type: postgres
+  path: "postgres://$dbuser:$dbpass@$dbhostname:$dbport/$dbdatabase?sslmode=disable"

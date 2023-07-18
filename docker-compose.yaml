@@ -18,12 +18,12 @@ services:
   gatus:
     depends_on:
       - config
+      - gatus_db
     image: twinproduction/gatus:latest
     ports:
       - 8888:8080
     volumes:
       - gatus_config:/config
-      - gatus_data:/data
 #  # Caddy Proxy
 #  caddy:
 #    env_file: .env
@@ -48,6 +48,8 @@ services:
 #      - "0.0.0.0:8080:8080"
 
   config:
+    depends_on:
+      - gatus_db
     env_file: .env
     image: fedi_api
     build:
@@ -57,6 +59,15 @@ services:
       - gatus_config:/app/fedi_gatus/config_gen/config
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
 
+  gatus_db:
+    hostname: gatusdb
+    image: postgres
+    env_file: .env
+    volumes:
+      - gatus_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+
 #  updater:
 #    env_file: .env
 #    image: fedi_updater
@@ -64,3 +75,4 @@ services:
 #      context: .
 #      dockerfile: Dockerfile
 #    entrypoint: [ "python3", "fedi_gatus/updater" ]
+
