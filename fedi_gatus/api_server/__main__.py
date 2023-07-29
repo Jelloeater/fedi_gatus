@@ -4,6 +4,7 @@ import os
 import uvicorn
 from fastapi import FastAPI
 from starlette import status
+from starlette.responses import RedirectResponse
 
 if os.getenv("LOG_LEVEL") is None:
     logging.basicConfig(level=logging.WARNING)
@@ -13,15 +14,14 @@ else:
 
 class web_app:
     def __init__(self):
-        BASE_URL = os.getenv("API_BASE_URL")
-        self.app = FastAPI(debug=True, docs_url=f'/{BASE_URL}/docs')
+        self.app = FastAPI(debug=True)
 
-        # @self.app.get(f'/{BASE_URL}', include_in_schema=False)
-        # async def root():
-        #     return RedirectResponse(self.app.docs_url)
+        @self.app.get('/', include_in_schema=False)
+        async def root():
+            return RedirectResponse(self.app.docs_url)
 
         @self.app.get(
-            f'/{BASE_URL}/healthcheck',  # For AutoDocs
+            f'/healthcheck',  # For AutoDocs
             responses={
                 status.HTTP_200_OK: {"description": "Connection to DB OK"},
                 status.HTTP_503_SERVICE_UNAVAILABLE: {
