@@ -1,5 +1,5 @@
 web:
-  port: 8888
+  port: 9999
 ui:
   title: Top Lemmy Instance Health Status
   description: Lemmy Status montoring. The nodes monitored on this page are generated dynamically based on ACTIVE user count.

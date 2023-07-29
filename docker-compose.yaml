@@ -13,8 +13,6 @@ services:
       - config
       - gatus_db
     image: twinproduction/gatus:latest
-    ports:
-      - 8888:8080
     volumes:
       - gatus_config:/config
 
