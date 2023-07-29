@@ -5,3 +5,6 @@
 http://{$SITE_ADDRESS} {
     reverse_proxy gatus:8888
 }
+http://{$SITE_ADDRESS}/{$API_BASE_URL}* {
+    reverse_proxy api:8080
+}
