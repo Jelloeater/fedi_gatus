@@ -2,7 +2,7 @@
     auto_https disable_redirects
 }
 
-http://{$SITE_ADDRESS} {
+http://{$SITE_ADDRESS}/* {
     reverse_proxy gatus:8888
 }
 http://{$SITE_ADDRESS}/{$API_BASE_URL}* {
