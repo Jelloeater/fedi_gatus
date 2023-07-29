@@ -2,9 +2,8 @@ import logging
 import os
 
 import uvicorn
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
 from starlette import status
-from starlette.responses import RedirectResponse
 
 if os.getenv("LOG_LEVEL") is None:
     logging.basicConfig(level=logging.WARNING)

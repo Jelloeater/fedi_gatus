@@ -5,6 +5,6 @@
 http://{$SITE_ADDRESS}/* {
     reverse_proxy http://gatus:9999
 }
-http://{$SITE_ADDRESS}/{$API_BASE_URL}/* {
-    reverse_proxy api:8080
+http://api.{$SITE_ADDRESS}/{$API_BASE_URL}/* {
+    reverse_proxy http://api:8080
 }
