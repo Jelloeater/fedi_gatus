@@ -1,3 +1,7 @@
-{$SITE_ADDRESS} {
-  reverse_proxy localhost:80
+{
+    auto_https disable_redirects
+}
+
+http://{$SITE_ADDRESS} {
+    reverse_proxy gatus:8888
 }

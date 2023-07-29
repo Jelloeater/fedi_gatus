@@ -38,7 +38,7 @@ def generate_ui():
     template = open(f"{SCRIPT_CUR_DIR}/base.template.yaml", "r")
     result = Template(template.read()).safe_substitute(
         {
-            "email": os.getenv("EMAIL"),
+            "email": os.getenv("GATUS_EMAIL"),
             "dbuser": os.getenv("POSTGRES_USER"),
             "dbpass": os.getenv("POSTGRES_PASSWORD"),
             "dbport": str(5432),

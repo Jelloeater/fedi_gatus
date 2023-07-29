@@ -6,13 +6,6 @@ volumes:
     external: false
   gatus_data:
 
-networks:
-  web:
-    external: false
-  internal:
-    external: false
-    driver: bridge
-
 services:
   #Monitor
   gatus:
@@ -24,28 +17,27 @@ services:
       - 8888:8080
     volumes:
       - gatus_config:/config
-#  # Caddy Proxy
-#  caddy:
-#    env_file: .env
-#    image: caddy:latest
-#    restart: unless-stopped
-#    ports:
-#      - 443:443
-#      - 443:443/udp
-#    volumes:
-#    - $PWD/Caddyfile:/etc/caddy/Caddyfile
-#    - caddy_data:/data
-#    - caddy_config:/config
-#    networks:
-#      - web
-#      - internal
 
-#  api:
-#    env_file: .env
-#    image: fedi_api
-#    entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
-#    ports:
-#      - "0.0.0.0:8080:8080"
+  # Caddy Proxy
+  caddy:
+    env_file: .env
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    volumes:
+    - $PWD/Caddyfile:/etc/caddy/Caddyfile
+    - caddy_data:/data
+    - caddy_config:/config
+
+  api:
+    env_file: .env
+    image: fedi_api
+    entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
+    ports:
+      - "0.0.0.0:8080:8080"
 
   config:
     depends_on:
