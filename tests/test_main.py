@@ -5,7 +5,7 @@ import dotenv
 import fedi_gatus.config_gen.__main__ as config_main
 import fedi_gatus.updater.data
 from fedi_gatus.config_gen import gen
-
+import fedi_gatus.shared.db as db
 dotenv.load_dotenv()
 
 import os
@@ -38,8 +38,6 @@ class TestConfig:
 
 
 
-
-
 class TestData:
     @classmethod
     def test_pull(cls):
@@ -48,5 +46,11 @@ class TestData:
 
     @classmethod
     def test_db_setup(cls):
-        import fedi_gatus.shared.db
-        fedi_gatus.shared.db.get_connection()
+        d = db.DataAccess()
+        m = db.DataModel()
+        import datetime
+        m.timestamp = datetime.datetime.utcnow()
+        m.some_data = "somedata"
+        d.save(m)
+
+

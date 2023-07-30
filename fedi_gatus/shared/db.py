@@ -24,7 +24,7 @@ def get_connection():
 
 class ModelBase(p.Model):
     class Meta:
-        database = p.Proxy()
+        database = p.DatabaseProxy()
 
 
 class DataModel(ModelBase):
@@ -35,7 +35,10 @@ class DataModel(ModelBase):
 class DataAccess(DataModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self._meta.database = get_connection()
+        # Updated DB Connection at runtime
         self.create_table()
+
 
     def get_single_record(self) -> dict:
         return self.select().get()
@@ -43,4 +46,5 @@ class DataAccess(DataModel):
     def insert(self, some_data: str) -> None:
         self.timestamp = datetime.datetime.utcnow()
         self.some_data = some_data
+        self.insert()
         self.save()
