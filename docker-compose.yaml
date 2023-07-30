@@ -34,8 +34,6 @@ services:
     env_file: .env
     image: fedi_api
     entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
-    ports:
-      - "0.0.0.0:8080:8080"
 
   config:
     depends_on:

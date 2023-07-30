@@ -35,7 +35,7 @@ class web_app:
 
 
 class Server:
-    port = 8080
+    port = 8888
 
     @classmethod
     def local_nic(cls):
