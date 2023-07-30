@@ -47,10 +47,10 @@ class TestData:
     @classmethod
     def test_db_setup(cls):
         d = db.DataAccess()
-        m = db.DataModel()
         import datetime
-        m.timestamp = datetime.datetime.utcnow()
-        m.some_data = "somedata"
-        d.save(m)
+        d.timestamp = datetime.datetime.utcnow()
+        d.some_data = "somedata"
+
+        d.save()
 
 
