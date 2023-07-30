@@ -31,6 +31,21 @@ class DataModel(ModelBase):
     timestamp = p.DateTimeField(unique=True)
     some_data = p.TextField()
 
+# class DataModel(ModelBase): # TODO Adapt data model
+#     id = p.BigIntegerField()
+#     domain = p.TextField()
+#     open_registration = p.BooleanField()
+#     description = p.TextField()
+#     banner_url = p.TextField()
+#     location_city = p.TextField()
+#     location_country = p.TextField()
+#     software_name = p.TextField()
+#     software_version = p.TextField()
+#     stats_status_count = p.BigIntegerField()
+#     stats_user_count = p.BigIntegerField()
+#     stats_monthly_active_users = p.BigIntegerField()
+#     first_seen_at = p.DateTimeField()
+#     last_seen_at = p.DateTimeField()
 
 class DataAccess(DataModel):
     def __init__(self, *args, **kwargs):
