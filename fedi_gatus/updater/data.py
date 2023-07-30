@@ -1,4 +1,5 @@
 # TODO Pull data from https://api.fediverse.observer/
+import os
 
 import requests
 
@@ -16,4 +17,7 @@ def get_raw_data():
         rest_data = requests.get(url=next_page, params={"limit": 40}, timeout=3).json()
         for i in rest_data["data"]:
             data.append(i)
+        if os.getenv("TEST_MODE"):  # Only run twice in test mode
+            if rest_data["links"]["prev"] is not None:
+                break
     return data

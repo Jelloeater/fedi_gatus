@@ -1,11 +1,17 @@
 import logging
+import os
 
 import dotenv
 
 import fedi_gatus.config_gen.__main__ as config_main
+import fedi_gatus.updater.data
 from fedi_gatus.config_gen import gen
 
 dotenv.load_dotenv()
+
+import os
+
+os.environ["TEST_MODE"] = "1"
 
 
 class TestConfig:
@@ -30,3 +36,10 @@ class TestConfig:
 
     def test_config_worker(self):
         config_main.main()
+
+
+class TestData:
+    @classmethod
+    def test_pull(cls):
+        d = fedi_gatus.updater.data.get_raw_data()
+        assert d is not None

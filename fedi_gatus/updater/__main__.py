@@ -1,8 +1,11 @@
 import logging
+import os
 
-import fedi_gatus.shared.log as log
 
-log.main()
+if os.getenv("LOG_LEVEL") is None:
+    logging.basicConfig(level=logging.WARNING)
+else:
+    logging.basicConfig(level=int(os.getenv("LOG_LEVEL")))
 
 
 def main():
