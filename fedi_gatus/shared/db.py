@@ -39,12 +39,11 @@ class DataAccess(DataModel):
         # Updated DB Connection at runtime
         self.create_table()
 
+    def get_single_record(self) -> dict:
+        return self.select().get()
 
-    # def get_single_record(self) -> dict:
-    #     return self.select().get()
-    #
-    # def insert(self, some_data: str) -> None:
-    #     self.timestamp = datetime.datetime.utcnow()
-    #     self.some_data = some_data
-    #     self.insert()
-    #     self.save()
+    def insert_data(self, some_data: str) -> None:
+        import datetime
+        self.timestamp = datetime.datetime.utcnow()
+        self.some_data = some_data
+        self.save()
