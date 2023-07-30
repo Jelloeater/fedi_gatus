@@ -42,7 +42,7 @@ def generate_ui():
             "dbuser": os.getenv("POSTGRES_USER"),
             "dbpass": os.getenv("POSTGRES_PASSWORD"),
             "dbport": str(5432),
-            "dbhostname": os.getenv("POSTGRES_HOSTNAME"),
+            "dbhostname": os.getenv("POSTGRES_HOSTNAME_GATUS"),
             "dbdatabase": os.getenv("POSTGRES_DB"),
         }
     )

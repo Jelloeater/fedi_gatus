@@ -1,5 +1,4 @@
 import logging
-import os
 
 import dotenv
 
@@ -38,8 +37,16 @@ class TestConfig:
         config_main.main()
 
 
+
+
+
 class TestData:
     @classmethod
     def test_pull(cls):
         d = fedi_gatus.updater.data.get_raw_data()
         assert d is not None
+
+    @classmethod
+    def test_db_setup(cls):
+        import fedi_gatus.shared.db
+        fedi_gatus.shared.db.get_connection()

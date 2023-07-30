@@ -56,6 +56,15 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
 
+  monitoring_db:
+    hostname: monitoringdb
+    image: postgres
+    env_file: .env
+    volumes:
+      - gatus_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+
 #  updater:
 #    env_file: .env
 #    image: fedi_updater

@@ -1,21 +1,30 @@
 import datetime
+import os
 
 import peewee as p
 
-DB_NAME = "data.shared"
 
-
-def setup_db_connection():
-    db = p.SqliteDatabase(
-        DB_NAME,  # pragmas={"journal_mode": "wal", "foreign_keys": 1}
-    )
-    db.connect()
+def get_connection():
+    if os.getenv("TEST_MODE"):  # Only run twice in test mode
+        DB_NAME = "data.shared"
+        db = p.SqliteDatabase(None, pragmas={"journal_mode": "wal", "foreign_keys": 1}
+                              )
+        db.init(database=DB_NAME)
+        db.connect()
+    else:
+        db = p.PostgresqlDatabase(None)
+        db.init(database=os.getenv("POSTGRES_DB"),
+                user=os.getenv("POSTGRES_USER"),
+                password=os.getenv("POSTGRES_PASSWORD"),
+                host=os.getenv("POSTGRES_HOSTNAME_MONITORING"),
+                port=5432)
+        db.connect()
     return db
 
 
 class ModelBase(p.Model):
     class Meta:
-        database = setup_db_connection()
+        database = p.Proxy()
 
 
 class DataModel(ModelBase):
