@@ -13,7 +13,7 @@ def Generate_endpoints(endpoint_list: [dict]):
     for i in endpoint_list:
         o = Endpoint()
         o.name = i.get("name")
-        o.url = i.get("url")
+        o.url = i.get("url") + "/nodeinfo/2.0.json"
         o.interval = str(20) + "s"
         o.conditions = ["[STATUS] == 200"]
         # FIXME Need to fix formatting to output
