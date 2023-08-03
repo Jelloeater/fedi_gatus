@@ -5,7 +5,7 @@ Functions
 ---------
 
     
-`setup_db_connection()`
+`get_connection()`
 :   
 
 Classes
@@ -38,7 +38,7 @@ Classes
     `get_single_record(self) ‑> dict`
     :
 
-    `insert(self, some_data: str) ‑> None`
+    `insert_data(self, some_data: str) ‑> None`
     :
 
 `DataModel(*args, **kwargs)`

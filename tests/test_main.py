@@ -3,9 +3,9 @@ import logging
 import dotenv
 
 import fedi_gatus.config_gen.__main__ as config_main
+import fedi_gatus.shared.db as db
 import fedi_gatus.updater.data
 from fedi_gatus.config_gen import gen
-import fedi_gatus.shared.db as db
 
 dotenv.load_dotenv()
 

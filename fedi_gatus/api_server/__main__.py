@@ -15,6 +15,8 @@ else:
 class web_app:
     def __init__(self):
         self.app = FastAPI(debug=True)
+        # TODO Add rate limit in Caddy
+        # TODO Add auth option for tokenhttps://www.freecodecamp.org/news/how-to-add-jwt-authentication-in-fastapi/
 
         @self.app.get("/", include_in_schema=False)
         async def root():
