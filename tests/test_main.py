@@ -4,7 +4,7 @@ import dotenv
 
 import fedi_gatus.config_gen.__main__ as config_main
 import fedi_gatus.shared.db as db
-import fedi_gatus.updater.data
+import fedi_gatus.updater.data as data
 from fedi_gatus.config_gen import gen
 
 dotenv.load_dotenv()
@@ -41,13 +41,16 @@ class TestConfig:
 class TestData:
     @classmethod
     def test_pull(cls):
-        d = fedi_gatus.updater.data.get_raw_data()
-        assert d is not None
+        d = data.Worker()
+        d.get_raw_data()
+        assert d.raw_data is not None
 
     @classmethod
-    def test_db_insert(cls):
-        d = db.DataAccess()
-        d.insert_data("lol")
+    def test_updater(cls):
+        w = data.Worker()
+        w.get_raw_data()
+        w.insert_data_()
+        assert w is not None
 
     @classmethod
     def test_db_get(cls):

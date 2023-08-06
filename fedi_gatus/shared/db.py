@@ -60,7 +60,7 @@ class DataAccess(DataModel):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def insert_data(self, some_data: str) -> None:
+    def insert_data(self, data_in: object) -> None:
         self.timestamp = datetime.datetime.utcnow()
-        self.some_data = some_data
+        self.some_data = data_in
         self.save()
