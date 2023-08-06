@@ -32,3 +32,4 @@ class Worker:
         d = db.DataAccess()
         for i in self.raw_data:
             d.insert_data(i)
+            d.save()

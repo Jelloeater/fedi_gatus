@@ -29,25 +29,20 @@ class ModelBase(p.Model):
 
 
 class DataModel(ModelBase):
-    timestamp = p.DateTimeField(unique=True)
-    some_data = p.TextField()
-
-
-# class DataModel(ModelBase): # TODO Adapt data model
-#     id = p.BigIntegerField()
-#     domain = p.TextField()
-#     open_registration = p.BooleanField()
-#     description = p.TextField()
-#     banner_url = p.TextField()
-#     location_city = p.TextField()
-#     location_country = p.TextField()
-#     software_name = p.TextField()
-#     software_version = p.TextField()
-#     stats_status_count = p.BigIntegerField()
-#     stats_user_count = p.BigIntegerField()
-#     stats_monthly_active_users = p.BigIntegerField()
-#     first_seen_at = p.DateTimeField()
-#     last_seen_at = p.DateTimeField()
+    id = p.BigIntegerField()
+    domain = p.TextField()
+    open_registration = p.BooleanField()
+    description = p.TextField()
+    banner_url = p.TextField()
+    location_city = p.TextField()
+    location_country = p.TextField()
+    software_name = p.TextField()
+    software_version = p.TextField()
+    stats_status_count = p.BigIntegerField()
+    stats_user_count = p.BigIntegerField()
+    stats_monthly_active_users = p.BigIntegerField()
+    first_seen_at = p.DateTimeField()
+    last_seen_at = p.DateTimeField()
 
 
 class DataAccess(DataModel):
@@ -61,6 +56,20 @@ class DataAccess(DataModel):
         return self.select().get()
 
     def insert_data(self, data_in: object) -> None:
-        self.timestamp = datetime.datetime.utcnow()
-        self.some_data = data_in
-        self.save()
+
+        from munch import DefaultMunch
+        data_in = DefaultMunch.fromDict(data_in)
+        self.id = data_in.id
+        self.domain = data_in.domain
+        self.open_registration = data_in.open_registration
+        self.description = data_in.description
+        self.banner_url = data_in.banner_url
+        self.location_city = data_in.location.city
+        self.location_country = data_in.location.country
+        self.software_name = data_in.software.name
+        self.software_version = data_in.software.version
+        self.stats_status_count = data_in.stats.status_count
+        self.stats_user_count = data_in.stats.user_count
+        self.stats_monthly_active_users = data_in.stats.monthly_active_users
+        self.first_seen_at = data_in.first_seen_at
+        self.last_seen_at = data_in.last_seen_at
