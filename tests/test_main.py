@@ -49,7 +49,7 @@ class TestData:
     def test_updater(cls):
         w = data.Worker()
         w.get_raw_data()
-        w.insert_data_()
+        w.insert_data()
         assert w is not None
 
     @classmethod

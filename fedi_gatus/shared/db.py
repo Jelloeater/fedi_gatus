@@ -28,19 +28,20 @@ class ModelBase(p.Model):
         database = p.DatabaseProxy()
 
 
+#
 class DataModel(ModelBase):
     id = p.BigIntegerField()
-    domain = p.TextField()
+    domain = p.TextField(unique=True)
     open_registration = p.BooleanField()
-    description = p.TextField()
-    banner_url = p.TextField()
-    location_city = p.TextField()
-    location_country = p.TextField()
-    software_name = p.TextField()
+    description = p.TextField(null=True)
+    banner_url = p.TextField(null=True)
+    location_city = p.TextField(null=True)
+    location_country = p.TextField(null=True)
+    software_name = p.TextField(null=True)
     software_version = p.TextField()
-    stats_status_count = p.BigIntegerField()
+    stats_status_count = p.BigIntegerField(null=True)
     stats_user_count = p.BigIntegerField()
-    stats_monthly_active_users = p.BigIntegerField()
+    stats_monthly_active_users = p.BigIntegerField(null=True)
     first_seen_at = p.DateTimeField()
     last_seen_at = p.DateTimeField()
 
@@ -56,7 +57,6 @@ class DataAccess(DataModel):
         return self.select().get()
 
     def insert_data(self, data_in: object) -> None:
-
         from munch import DefaultMunch
         data_in = DefaultMunch.fromDict(data_in)
         self.id = data_in.id
@@ -73,3 +73,4 @@ class DataAccess(DataModel):
         self.stats_monthly_active_users = data_in.stats.monthly_active_users
         self.first_seen_at = data_in.first_seen_at
         self.last_seen_at = data_in.last_seen_at
+        self.save(force_insert=True)

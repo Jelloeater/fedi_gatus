@@ -2,6 +2,7 @@
 import logging
 import os
 
+import peewee
 import requests
 
 from fedi_gatus.shared import db
@@ -28,8 +29,10 @@ class Worker:
                     break
         self.raw_data = data
 
-    def insert_data_(self):
+    def insert_data(self):
         d = db.DataAccess()
         for i in self.raw_data:
-            d.insert_data(i)
-            d.save()
+            try:
+                d.insert_data(i)
+            except peewee.IntegrityError as e:
+                logging.error(e)
