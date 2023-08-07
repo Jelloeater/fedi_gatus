@@ -56,4 +56,22 @@ class TestData:
     def test_db_get(cls):
         d = db.DataAccess()
         r = d.get_single_record()
-        assert r
+        assert r is not None
+
+    @classmethod
+    def test_db_get_top(cls):
+        d = db.DataAccess()
+        r = d.get_top_lemmy_instances()
+        assert r is not None
+
+    @classmethod
+    def test_db_full_load(cls):
+        import time
+        start = time.time()
+        d = db.DataAccess()
+        d.drop_table() # Clear table
+        d.create_table()
+        r = d.get_top_lemmy_instances()
+        end = time.time()
+        logging.debug(end - start)
+        assert r is not None

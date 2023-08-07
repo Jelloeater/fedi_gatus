@@ -56,6 +56,9 @@ class DataAccess(DataModel):
     def get_single_record(self) -> dict:
         return self.select().get()
 
+    def get_top_lemmy_instances(self, count=25) -> dict:
+        return self.select().order_by(DataModel.stats_user_count).limit(count).get()
+
     def insert_data(self, data_in: object) -> None:
         from munch import DefaultMunch
         data_in = DefaultMunch.fromDict(data_in)
