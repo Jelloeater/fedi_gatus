@@ -67,9 +67,10 @@ class TestData:
     @classmethod
     def test_db_full_load(cls):
         import time
+
         start = time.time()
         d = db.DataAccess()
-        d.drop_table() # Clear table
+        d.drop_table()  # Clear table
         d.create_table()
         r = d.get_top_lemmy_instances()
         end = time.time()

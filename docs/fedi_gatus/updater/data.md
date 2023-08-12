@@ -1,9 +1,21 @@
 Module fedi_gatus.updater.data
 ==============================
 
-Functions
----------
+Classes
+-------
 
-    
-`get_raw_data()`
-:
+`Worker()`
+:   
+
+    ### Class variables
+
+    `raw_data`
+    :
+
+    ### Methods
+
+    `get_raw_data(self)`
+    :
+
+    `insert_data(self)`
+    :

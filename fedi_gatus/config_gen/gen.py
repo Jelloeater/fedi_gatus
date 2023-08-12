@@ -51,6 +51,7 @@ def generate_ui():
 
 
 def generate_full_config():
+    # TODO  Add alerting to PagerDuty
     u = generate_ui()
     e = Generate_endpoints(generate_top_instances())
     return u + e

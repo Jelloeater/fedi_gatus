@@ -24,13 +24,46 @@ Classes
 
     ### Class variables
 
+    `banner_url`
+    :
+
+    `description`
+    :
+
+    `domain`
+    :
+
+    `first_seen_at`
+    :
+
     `id`
     :
 
-    `some_data`
+    `last_seen_at`
     :
 
-    `timestamp`
+    `location_city`
+    :
+
+    `location_country`
+    :
+
+    `open_registration`
+    :
+
+    `software_name`
+    :
+
+    `software_version`
+    :
+
+    `stats_monthly_active_users`
+    :
+
+    `stats_status_count`
+    :
+
+    `stats_user_count`
     :
 
     ### Methods
@@ -38,7 +71,10 @@ Classes
     `get_single_record(self) ‑> dict`
     :
 
-    `insert_data(self, some_data: str) ‑> None`
+    `get_top_lemmy_instances(self, count=25) ‑> dict`
+    :
+
+    `insert_data(self, data_in: object) ‑> None`
     :
 
 `DataModel(*args, **kwargs)`
@@ -57,13 +93,46 @@ Classes
 
     ### Class variables
 
+    `banner_url`
+    :
+
+    `description`
+    :
+
+    `domain`
+    :
+
+    `first_seen_at`
+    :
+
     `id`
     :
 
-    `some_data`
+    `last_seen_at`
     :
 
-    `timestamp`
+    `location_city`
+    :
+
+    `location_country`
+    :
+
+    `open_registration`
+    :
+
+    `software_name`
+    :
+
+    `software_version`
+    :
+
+    `stats_monthly_active_users`
+    :
+
+    `stats_status_count`
+    :
+
+    `stats_user_count`
     :
 
 `ModelBase(*args, **kwargs)`

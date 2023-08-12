@@ -61,6 +61,7 @@ class DataAccess(DataModel):
 
     def insert_data(self, data_in: object) -> None:
         from munch import DefaultMunch
+
         data_in = DefaultMunch.fromDict(data_in)
         self.id = data_in.id
         self.domain = data_in.domain
