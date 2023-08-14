@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 
 import peewee as p
@@ -56,8 +57,12 @@ class DataAccess(DataModel):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_lemmy_instances(self, count=25) -> dict:
-        return self.select().order_by(DataModel.stats_user_count).limit(count).get()
+    def get_top_lemmy_instances(self, count=25) -> list[DataModel]:
+        d = self.select().order_by(DataModel.stats_user_count.name).limit(count)
+        info = []
+        for i in d:
+            info.append(i)
+        return info
 
     def insert_data(self, data_in: object) -> None:
         from munch import DefaultMunch
