@@ -65,11 +65,7 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
 
-#  updater:
-#    env_file: .env
-#    image: fedi_updater
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    entrypoint: [ "python3", "fedi_gatus/updater" ]
-
+  updater:
+    env_file: .env
+    image: fedi_updater
+    entrypoint: [ "python3", "fedi_gatus/updater/__main__.py" ]

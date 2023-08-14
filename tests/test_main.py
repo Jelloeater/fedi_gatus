@@ -6,6 +6,7 @@ import fedi_gatus.config_gen.__main__ as config_main
 import fedi_gatus.shared.db as db
 import fedi_gatus.updater.data as data
 from fedi_gatus.config_gen import gen
+import fedi_gatus.updater.__main__ as updater
 
 dotenv.load_dotenv()
 
@@ -76,3 +77,9 @@ class TestConfig:
 
     def test_config_worker(self):
         config_main.main()
+
+
+class TestUpdater:
+    @classmethod
+    def test_main_update(cls):
+        updater.main()
