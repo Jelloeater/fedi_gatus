@@ -38,6 +38,7 @@ services:
   config:
     depends_on:
       - gatus_db
+      - updater
     env_file: .env
     image: fedi_api
     build:
