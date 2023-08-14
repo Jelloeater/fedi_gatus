@@ -1,5 +1,6 @@
 import yaml
 
+from fedi_gatus.shared import db
 
 class Endpoint:
     name = str
@@ -59,8 +60,8 @@ def generate_full_config():
 
 def generate_top_instances():
     # TODO This should be a DB call
+    d = db.DataAccess().get_top_lemmy_instances()
     instances = []
-    i = {"name": "Lemmy World", "url": "https://lemmy.world"}  # TODO Remove demo data
-    instances.append(i)
-
+    for i in d:
+        instances.append({"name": f"{i.domain} - {i.description}", "url": i.domain})
     return instances

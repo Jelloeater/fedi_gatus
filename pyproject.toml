@@ -26,6 +26,7 @@ datetime = "*"
 fastapi = "0.96.0"
 uvicorn ={version="0.22.0", extras = ["standard"]}
 munch = "^4.0.0"
+psycopg2-binary = "^2.9.7"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

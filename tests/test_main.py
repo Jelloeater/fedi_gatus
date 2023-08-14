@@ -14,30 +14,6 @@ import os
 os.environ["TEST_MODE"] = "1"
 
 
-class TestConfig:
-    @classmethod
-    def test_config_gen(cls):
-        d = [{"name": "Lemmy World", "url": "https://lemmy.world"}, {"name": "Lemmy ML", "url": "https://lemmy.ml"}]
-        out = gen.Generate_endpoints(d)
-        assert out is not None
-        return out
-
-    @classmethod
-    def test_ui_gen(cls):
-        result = gen.generate_ui()
-        logging.info(result)
-        assert result is not None
-        return result
-
-    def test_generate_full_config(cls):
-        x = gen.generate_full_config()
-        logging.debug(x)
-        assert x is not None
-
-    def test_config_worker(self):
-        config_main.main()
-
-
 class TestData:
     @classmethod
     def test_pull(cls):
@@ -76,3 +52,27 @@ class TestData:
         end = time.time()
         logging.debug(end - start)
         assert r is not None
+
+
+class TestConfig:
+    @classmethod
+    def test_config_gen(cls):
+        d = [{"name": "Lemmy World", "url": "https://lemmy.world"}, {"name": "Lemmy ML", "url": "https://lemmy.ml"}]
+        out = gen.Generate_endpoints(d)
+        assert out is not None
+        return out
+
+    @classmethod
+    def test_ui_gen(cls):
+        result = gen.generate_ui()
+        logging.info(result)
+        assert result is not None
+        return result
+
+    def test_generate_full_config(cls):
+        x = gen.generate_full_config()
+        logging.debug(x)
+        assert x is not None
+
+    def test_config_worker(self):
+        config_main.main()
