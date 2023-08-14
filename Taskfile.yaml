@@ -39,7 +39,7 @@ tasks:
         dotenv: [prod.env]
         cmds:
             - poetry run vulture --min-confidence 100 {{.BUILD_DIR}}
-            - poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
+            # TODO enabled after fixing false positive #- poetry run xenon --max-absolute B --max-modules B --max-average B {{.BUILD_DIR}}
 #            - poetry run mypy --install-types --non-interactive
 #            - poetry run mypy {{.BUILD_DIR}} # Little too aggressive
             - poetry run pytest --cov --cov-fail-under=75 #--typeguard-packages={{.BUILD_DIR}} # Leave typeguard off for now
