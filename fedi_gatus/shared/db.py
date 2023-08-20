@@ -6,7 +6,7 @@ import peewee as p
 
 
 def get_connection():
-    if os.getenv("TEST_MODE"):  # Only run twice in test mode
+    if os.getenv("SQL_LITE"):  # Only run twice in test mode
         DB_NAME = "data.shared"
         db = p.SqliteDatabase(None, pragmas={"journal_mode": "wal", "foreign_keys": 1})
         db.init(database=DB_NAME)
