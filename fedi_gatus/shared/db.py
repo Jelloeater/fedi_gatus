@@ -62,7 +62,11 @@ class FediHelper(FediModel):
         self._meta.database = get_connection()
         # Updated DB Connection at runtime
         self.create_table()
-
+        ################################################################################################
+        # IMPORTANT
+        # Databases will NOT get created when you are using PostGREs, you need to make the DB first or
+        # use default db postgres
+        ################################################################################################
     def get_single_record(self) -> dict:
         return self.select().get()
 
