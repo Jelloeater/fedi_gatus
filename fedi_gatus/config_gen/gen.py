@@ -33,6 +33,7 @@ def generate_ui():
     result = Template(template.read()).safe_substitute(
         {
             "email": os.getenv("GATUS_EMAIL"),
+            "site_address": os.getenv("SITE_ADDRESS"),
             "dbuser": os.getenv("POSTGRES_USER"),
             "dbpass": os.getenv("POSTGRES_PASSWORD"),
             "dbport": str(5432),
