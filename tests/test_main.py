@@ -14,8 +14,6 @@ import os
 
 os.environ["SQL_LITE"] = "1"
 os.environ["TEST_MODE"] = "1"
-
-
 class TestData:
     @classmethod
     def test_pull(cls):
@@ -29,6 +27,13 @@ class TestData:
         w.get_raw_data()
         w.insert_data()
         assert w is not None
+
+
+class TestDB:
+    @classmethod
+    def test_db_access(cls):
+        d = db.DataAccess()
+        assert d is not None
 
     @classmethod
     def test_db_get(cls):
@@ -84,3 +89,10 @@ class TestUpdater:
     @classmethod
     def test_main_update(cls):
         updater.main()
+
+    # @classmethod
+    # def test_main_update_postgres_BG(cls):
+    #     os.environ.pop("SQL_LITE")
+    #     os.environ["POSTGRES_HOSTNAME_MONITORING"] = "localhost"
+    #     os.environ["TEST_MODE"] = "1"
+    #     updater.main()

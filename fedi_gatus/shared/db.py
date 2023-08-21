@@ -6,15 +6,24 @@ import peewee as p
 
 
 def get_connection():
+    DOCKER_VOLUME = "/data"
+    logging.info(os.getcwd())
     if os.getenv("SQL_LITE"):  # Only run twice in test mode
         DB_NAME = "data.shared"
+        if os.getenv("DOCKER"):
+            logging.info("CWD=" + str(os.getcwd()))
+            DB_NAME = DOCKER_VOLUME + "/" + DB_NAME
+            logging.info("DB Path = " + DB_NAME)
+
         db = p.SqliteDatabase(None, pragmas={"journal_mode": "wal", "foreign_keys": 1})
         db.init(database=DB_NAME)
         db.connect()
+        if os.getenv("DOCKER"):
+            logging.info(os.listdir(DOCKER_VOLUME))
     else:
         db = p.PostgresqlDatabase(None)
         db.init(
-            database=os.getenv("POSTGRES_DB"),
+            database=os.getenv("POSTGRES_DB_MONITORING"),
             user=os.getenv("POSTGRES_USER"),
             password=os.getenv("POSTGRES_PASSWORD"),
             host=os.getenv("POSTGRES_HOSTNAME_MONITORING"),
@@ -58,7 +67,8 @@ class DataAccess(DataModel):
         return self.select().get()
 
     def get_top_lemmy_instances(self, count=25) -> list[DataModel]:
-        d = DataAccess.select().where(DataAccess.software_name == 'Lemmy').order_by(DataModel.stats_user_count.column_name).limit(count)
+        logging.info("Number of Rows:" + str(DataAccess.select().count()))
+        d = DataAccess.select().where(DataAccess.software_name == 'Lemmy').limit(count)
         info = []
         for i in d:
             info.append(i)

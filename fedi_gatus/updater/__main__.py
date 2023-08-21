@@ -1,9 +1,11 @@
 import logging
 import os
+
+
 import fedi_gatus.updater.data as data
 
 if os.getenv("LOG_LEVEL") is None:
-    logging.basicConfig(level=logging.WARNING)
+    logging.basicConfig(level=logging.DEBUG)
 else:
     logging.basicConfig(level=int(os.getenv("LOG_LEVEL")))
 

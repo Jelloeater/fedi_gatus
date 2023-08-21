@@ -5,6 +5,7 @@ volumes:
   gatus_config:
     external: false
   gatus_data:
+  monitoring_data:
 
 services:
   #Monitor
@@ -38,14 +39,17 @@ services:
   config:
     depends_on:
       - gatus_db
-      - updater
     env_file: .env
+    environment:
+      - DOCKER=1
+      #- SQL_LITE=1
     image: fedi_api
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - gatus_config:/app/fedi_gatus/config_gen/config
+      #- monitoring_data:/data
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
 
   gatus_db:
@@ -65,8 +69,12 @@ services:
       - gatus_data:/var/lib/postgresql/data
     ports:
       - "127.0.0.1:5432:5432"
-
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
   updater:
     env_file: .env
     image: fedi_updater
-    entrypoint: [ "python3", "fedi_gatus/updater/__main__.py" ]
+    entrypoint: [ "python3", "fedi_gatus/updater" ]
