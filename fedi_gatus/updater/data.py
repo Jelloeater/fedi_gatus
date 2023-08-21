@@ -30,7 +30,7 @@ class Worker:
         self.raw_data = data
 
     def insert_data(self):
-        d = db.DataAccess()
+        d = db.FediHelper()
         for i in self.raw_data:
             try:
                 d.insert_data(i)

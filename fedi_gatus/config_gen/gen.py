@@ -60,7 +60,7 @@ def generate_full_config():
 
 def generate_top_instances():
     # TODO This should be a DB call
-    d = db.DataAccess().get_top_lemmy_instances()
+    d = db.FediHelper().get_top_lemmy_instances()
     instances = []
     for i in d:
         instances.append({"name": f"{i.domain} - {i.description}", "url": i.domain})

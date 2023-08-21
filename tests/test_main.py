@@ -32,18 +32,18 @@ class TestData:
 class TestDB:
     @classmethod
     def test_db_access(cls):
-        d = db.DataAccess()
+        d = db.FediHelper()
         assert d is not None
 
     @classmethod
     def test_db_get(cls):
-        d = db.DataAccess()
+        d = db.FediHelper()
         r = d.get_single_record()
         assert r is not None
 
     @classmethod
     def test_db_get_top(cls):
-        d = db.DataAccess()
+        d = db.FediHelper()
         r = d.get_top_lemmy_instances()
         assert r is not None
 
@@ -52,7 +52,7 @@ class TestDB:
         import time
 
         start = time.time()
-        d = db.DataAccess()
+        d = db.FediHelper()
         d.drop_table()  # Clear table
         d.create_table()
         r = d.get_top_lemmy_instances()

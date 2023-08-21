@@ -39,7 +39,7 @@ class ModelBase(p.Model):
 
 
 #
-class DataModel(ModelBase):
+class FediModel(ModelBase):
     id = p.BigIntegerField()
     domain = p.TextField(unique=True)
     open_registration = p.BooleanField()
@@ -56,7 +56,7 @@ class DataModel(ModelBase):
     last_seen_at = p.DateTimeField()
 
 
-class DataAccess(DataModel):
+class FediHelper(FediModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._meta.database = get_connection()
@@ -66,9 +66,9 @@ class DataAccess(DataModel):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_lemmy_instances(self, count=25) -> list[DataModel]:
-        logging.info("Number of Rows:" + str(DataAccess.select().count()))
-        d = DataAccess.select().where(DataAccess.software_name == 'Lemmy').limit(count)
+    def get_top_lemmy_instances(self, count=25) -> list[FediModel]:
+        logging.info("Number of Rows:" + str(FediHelper.select().count()))
+        d = FediHelper.select().where(FediHelper.software_name == 'Lemmy').limit(count)
         info = []
         for i in d:
             info.append(i)
