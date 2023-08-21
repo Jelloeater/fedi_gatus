@@ -52,10 +52,9 @@ def generate_full_config():
 
 
 def generate_top_instances():
-    # TODO This should be a DB call
     d = db.FediHelper().get_top_lemmy_instances()
     instances = []
-    for i in d:
+    for i in d: #TODO not in order by user count
         url = "https://" + i.domain
-        instances.append({"name": f"{i.domain} - Version: {i.software_version}", "url": url})
+        instances.append({"name": f"{i.domain}", "url": url})
     return instances
