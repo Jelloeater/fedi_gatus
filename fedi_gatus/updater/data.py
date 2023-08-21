@@ -36,3 +36,8 @@ class Worker:
                 d.insert_data(i)
             except peewee.IntegrityError as e:
                 logging.error(e)
+
+    @staticmethod
+    def drop_data():
+        d = db.FediHelper()
+        d.drop_table(safe=False)

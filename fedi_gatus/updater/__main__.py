@@ -14,6 +14,7 @@ def main():
     logging.info("Update Database info")
     w = data.Worker()
     w.get_raw_data()
+    w.drop_data()
     w.insert_data()
     # TODO Add test to make sure data is present, and redo if not
 
