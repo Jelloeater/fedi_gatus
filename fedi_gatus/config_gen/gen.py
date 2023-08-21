@@ -1,3 +1,5 @@
+import logging
+
 import yaml
 
 from fedi_gatus.shared import db
@@ -23,6 +25,8 @@ def Generate_endpoints(endpoint_list: [dict]):
 
 
 def generate_ui():
+    logging.info('Generate UI')
+
     import os
 
     SCRIPT_CUR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -49,10 +53,12 @@ def generate_full_config():
     # TODO  Add alerting to PagerDuty
     u = generate_ui()
     e = Generate_endpoints(generate_top_instances())
+    logging.info('Config generated')
     return u + e
 
 
 def generate_top_instances():
+    logging.info('Get top instances')
     d = db.FediHelper().get_top_lemmy_instances()
     instances = []
     for i in d: #TODO not in order by user count

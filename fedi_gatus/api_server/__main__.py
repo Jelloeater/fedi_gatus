@@ -64,4 +64,5 @@ class Server:
 
 
 if __name__ == "__main__":
+    logging.info('Starting API Server')
     Server().start_server()

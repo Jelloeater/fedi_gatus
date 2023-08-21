@@ -61,7 +61,10 @@ class FediHelper(FediModel):
         super().__init__(*args, **kwargs)
         self._meta.database = get_connection()
         # Updated DB Connection at runtime
+        logging.info('Got DB connection')
         self.create_table()
+        logging.info('Create Table if missing')
+
         ################################################################################################
         # IMPORTANT
         # Databases will NOT get created when you are using PostGREs, you need to make the DB first or

@@ -24,6 +24,8 @@ def main():
 
 
 if __name__ == "__main__":
+    logging.info("Config gen start")
     main()
+    logging.info("Config gen finished")
 
 # TODO Add Pagerduty integration https://github.com/TwiN/gatus/blob/master/docs/pagerduty-integration-guide.md

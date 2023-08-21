@@ -27,6 +27,11 @@ class Worker:
             if os.getenv("TEST_MODE"):  # Only run twice in test mode
                 if rest_data["links"]["prev"] is not None:
                     break
+
+            try:
+                logging.info("Downloading: " + rest_data["links"]["next"])
+            except TypeError:
+                pass
         self.raw_data = data
 
     def insert_data(self):

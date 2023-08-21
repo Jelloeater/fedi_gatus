@@ -11,13 +11,16 @@ else:
 
 
 def main():
-    logging.info("Update Database info")
     w = data.Worker()
     w.get_raw_data()
+    logging.info("Data Downloaded")
     w.drop_data()
+    logging.info("Updating database")
     w.insert_data()
     # TODO Add test to make sure data is present, and redo if not
 
 
 if __name__ == "__main__":
+    logging.info("Updater start")
     main()
+    logging.info("Updater finished")
