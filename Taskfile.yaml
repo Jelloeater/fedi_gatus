@@ -64,4 +64,7 @@ tasks:
       - docker-compose build --no-cache --pull --progress=plain
     run:
       - docker-compose build
-      - docker-compose up
+      - docker-compose up -d
+      - docker-compose up updater # Block for config setup
+      - docker-compose up config
+      - docker-compose up -d gatus
