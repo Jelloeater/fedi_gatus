@@ -26,3 +26,7 @@ config_gen
 
 gatus --store data in--> gatus_postgres
 ```
+
+# Usage
+- Install gotask
+- task run

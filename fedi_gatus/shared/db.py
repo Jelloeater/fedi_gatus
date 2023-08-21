@@ -42,7 +42,7 @@ class ModelBase(p.Model):
 class FediModel(ModelBase):
     id = p.BigIntegerField()
     domain = p.TextField(unique=True)
-    open_registration = p.BooleanField()
+    open_registration = p.BooleanField(null=True)
     description = p.TextField(null=True)
     banner_url = p.TextField(null=True)
     location_city = p.TextField(null=True)

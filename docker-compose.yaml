@@ -19,6 +19,9 @@ services:
 
   # Caddy Proxy
   caddy:
+    depends_on:
+      - api
+      - gatus
     env_file: .env
     image: caddy:latest
     restart: unless-stopped
@@ -32,13 +35,18 @@ services:
     - caddy_config:/config
 
   api:
+    environment:
+      - DOCKER=1
+    depends_on:
+      - monitoring_db
+      - gatus_db
     env_file: .env
     image: fedi_api
     entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
 
   config:
     depends_on:
-      - gatus_db
+      - updater
     env_file: .env
     environment:
       - DOCKER=1
@@ -80,6 +88,10 @@ services:
       timeout: 3s
       retries: 3
   updater:
+    environment:
+      - DOCKER=1
+    depends_on:
+      - monitoring_db
     env_file: .env
     image: fedi_api
     entrypoint: [ "python3", "fedi_gatus/updater" ]
