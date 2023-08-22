@@ -35,14 +35,13 @@ class Worker:
         self.raw_data = data
 
     def insert_data(self):
-        d = db.FediHelper()
+        d = db.DbAccess()
         for i in self.raw_data:
             try:
                 d.insert_data(i)
             except peewee.IntegrityError as e:
                 logging.error(e)
 
-    @staticmethod
-    def drop_data():
-        d = db.FediHelper()
-        d.drop_table(safe=False)
+    def initialize_db(self):
+        d = db.DbAccess()
+        d.initialize()

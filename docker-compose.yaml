@@ -3,7 +3,6 @@ volumes:
   caddy_data:
   caddy_config:
   gatus_config:
-    external: false
   gatus_data:
   monitoring_data:
 
@@ -56,7 +55,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - gatus_config:/app/fedi_gatus/config_gen/config
+      - gatus_config:/app/fedi_gatus/config_gen/config:rw
       #- monitoring_data:/data
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
 

@@ -12,9 +12,9 @@ else:
 
 def main():
     w = data.Worker()
+    w.initialize_db()
     w.get_raw_data()
     logging.info("Data Downloaded")
-    w.drop_data()
     logging.info("Updating database")
     w.insert_data()
     # TODO Add test to make sure data is present, and redo if not

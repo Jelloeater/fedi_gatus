@@ -39,7 +39,7 @@ class ModelBase(p.Model):
 
 
 #
-class FediModel(ModelBase):
+class Model(ModelBase):
     id = p.BigIntegerField()
     domain = p.TextField(unique=True)
     open_registration = p.BooleanField(null=True)
@@ -56,14 +56,12 @@ class FediModel(ModelBase):
     last_seen_at = p.DateTimeField()
 
 
-class FediHelper(FediModel):
+class DbAccess(Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._meta.database = get_connection()
         # Updated DB Connection at runtime
         logging.info('Got DB connection')
-        self.create_table()
-        logging.info('Create Table if missing')
 
         ################################################################################################
         # IMPORTANT
@@ -73,9 +71,9 @@ class FediHelper(FediModel):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_lemmy_instances(self, count=25) -> list[FediModel]:
-        logging.info("Number of Rows:" + str(FediHelper.select().count()))
-        d = FediHelper.select().where(FediHelper.software_name == 'Lemmy').limit(count)
+    def get_top_lemmy_instances(self, count=25) -> list[Model]:
+        logging.info("Number of Rows:" + str(DbAccess.select().count()))
+        d = DbAccess.select().where(DbAccess.software_name == 'Lemmy').limit(count)
         info = []
         for i in d:
             info.append(i)
@@ -100,3 +98,9 @@ class FediHelper(FediModel):
         self.first_seen_at = data_in.first_seen_at
         self.last_seen_at = data_in.last_seen_at
         self.save(force_insert=True)
+
+    def initialize(self):
+        logging.info('Create Table if missing')
+
+        self.drop_table()
+        self.create_table()
