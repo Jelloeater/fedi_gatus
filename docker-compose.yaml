@@ -10,7 +10,6 @@ services:
   #Monitor
   gatus:
     depends_on:
-      - config
       - gatus_db
     image: twinproduction/gatus:latest
     volumes:
@@ -45,7 +44,7 @@ services:
 
   config:
     depends_on:
-      - updater
+      - monitoring_db
     env_file: .env
     environment:
       - DOCKER=1
