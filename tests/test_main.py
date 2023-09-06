@@ -4,9 +4,9 @@ import dotenv
 
 import fedi_gatus.config_gen.__main__ as config_main
 import fedi_gatus.shared.db as db
+import fedi_gatus.updater.__main__ as updater
 import fedi_gatus.updater.data as data
 from fedi_gatus.config_gen import gen
-import fedi_gatus.updater.__main__ as updater
 
 dotenv.load_dotenv()
 
@@ -14,6 +14,8 @@ import os
 
 os.environ["SQL_LITE"] = "1"
 os.environ["TEST_MODE"] = "1"
+
+
 class TestData:
     @classmethod
     def test_pull(cls):

@@ -4,6 +4,7 @@ import yaml
 
 from fedi_gatus.shared import db
 
+
 class Endpoint:
     name = str
     url = str
@@ -25,7 +26,7 @@ def Generate_endpoints(endpoint_list: [dict]):
 
 
 def generate_ui():
-    logging.info('Generate UI')
+    logging.info("Generate UI")
 
     import os
 
@@ -53,15 +54,16 @@ def generate_full_config():
     # TODO  Add alerting to PagerDuty
     u = generate_ui()
     e = Generate_endpoints(generate_top_instances())
-    logging.info('Config generated')
+    logging.info("Config generated")
     return u + e
+    # FIXME Add Gatus API endpoint Ex https://lemmy-status.org/api/v1/endpoints/statuses
 
 
 def generate_top_instances():
-    logging.info('Get top instances')
+    logging.info("Get top instances")
     d = db.DbAccess().get_top_lemmy_instances()
     instances = []
-    for i in d: #TODO not in order by user count
+    for i in d:  # TODO not in order by user count
         url = "https://" + i.domain
         instances.append({"name": f"{i.domain}", "url": url})
     return instances

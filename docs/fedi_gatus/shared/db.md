@@ -11,12 +11,12 @@ Functions
 Classes
 -------
 
-`DataAccess(*args, **kwargs)`
+`DbAccess(*args, **kwargs)`
 :   
 
     ### Ancestors (in MRO)
 
-    * fedi_gatus.shared.db.DataModel
+    * fedi_gatus.shared.db.Model
     * fedi_gatus.shared.db.ModelBase
     * peewee.Model
     * peewee._metaclass_helper_
@@ -71,13 +71,16 @@ Classes
     `get_single_record(self) ‑> dict`
     :
 
-    `get_top_lemmy_instances(self, count=25) ‑> dict`
+    `get_top_lemmy_instances(self, count=25) ‑> list[fedi_gatus.shared.db.Model]`
+    :
+
+    `initialize(self)`
     :
 
     `insert_data(self, data_in: object) ‑> None`
     :
 
-`DataModel(*args, **kwargs)`
+`Model(*args, **kwargs)`
 :   
 
     ### Ancestors (in MRO)
@@ -89,7 +92,7 @@ Classes
 
     ### Descendants
 
-    * fedi_gatus.shared.db.DataAccess
+    * fedi_gatus.shared.db.DbAccess
 
     ### Class variables
 
@@ -146,7 +149,7 @@ Classes
 
     ### Descendants
 
-    * fedi_gatus.shared.db.DataModel
+    * fedi_gatus.shared.db.Model
 
     ### Class variables
 

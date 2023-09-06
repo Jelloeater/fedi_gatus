@@ -17,5 +17,8 @@ Classes
     `get_raw_data(self)`
     :
 
+    `initialize_db(self)`
+    :
+
     `insert_data(self)`
     :

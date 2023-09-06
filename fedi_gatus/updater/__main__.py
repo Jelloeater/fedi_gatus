@@ -1,7 +1,6 @@
 import logging
 import os
 
-
 import fedi_gatus.updater.data as data
 
 if os.getenv("LOG_LEVEL") is None:

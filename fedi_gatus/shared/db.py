@@ -1,4 +1,4 @@
-import datetime
+# import datetime # TODO Maybe add Updated field?
 import logging
 import os
 
@@ -61,19 +61,20 @@ class DbAccess(Model):
         super().__init__(*args, **kwargs)
         self._meta.database = get_connection()
         # Updated DB Connection at runtime
-        logging.info('Got DB connection')
+        logging.info("Got DB connection")
 
         ################################################################################################
         # IMPORTANT
         # Databases will NOT get created when you are using PostGREs, you need to make the DB first or
         # use default db postgres
         ################################################################################################
+
     def get_single_record(self) -> dict:
         return self.select().get()
 
     def get_top_lemmy_instances(self, count=25) -> list[Model]:
         logging.info("Number of Rows:" + str(DbAccess.select().count()))
-        d = DbAccess.select().where(DbAccess.software_name == 'Lemmy').limit(count)
+        d = DbAccess.select().where(DbAccess.software_name == "Lemmy").limit(count)
         info = []
         for i in d:
             info.append(i)
@@ -100,7 +101,7 @@ class DbAccess(Model):
         self.save(force_insert=True)
 
     def initialize(self):
-        logging.info('Create Table if missing')
+        logging.info("Create Table if missing")
 
         self.drop_table()
         self.create_table()
