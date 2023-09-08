@@ -1,0 +1,152 @@
+web:
+  port: 9999
+ui:
+  title: Top Lemmy Instance Health Status
+  description: Lemmy Status montoring. The nodes monitored on this page are generated dynamically based on ACTIVE user count.
+  header: Public Instance Health / Statistics
+  logo: https://upload.wikimedia.org/wikipedia/commons/9/93/Fediverse_logo_proposal.svg
+  link: https://join-lemmy.org
+  buttons:
+  - name: Join Lemmy
+    link: https://join-lemmy.org
+  - name: Lemmy Instances
+    link: https://fedidb.org/software/lemmy
+  - name: Lemmy Map
+    link: https://lemmymap.feddit.de/
+  - name: Lemmy Communities
+    link: https://lemmyverse.net/communities
+  - name: GitHub
+    link: https://github.com/Jelloeater/fedi_gatus
+  - name: Contact me
+    link: mailto:None
+  - name: API
+    link: https://api.localhost
+storage:
+  type: postgres
+  path: "postgres://username:password@gatusdb:5432/gatus?sslmode=disable"
+endpoints:
+- name: lemmy.world
+  url: https://lemmy.world/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.ml
+  url: https://lemmy.ml/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: hexbear.net
+  url: https://hexbear.net/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: sh.itjust.works
+  url: https://sh.itjust.works/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemm.ee
+  url: https://lemm.ee/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: beehaw.org
+  url: https://beehaw.org/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.dbzer0.com
+  url: https://lemmy.dbzer0.com/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: feddit.de
+  url: https://feddit.de/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmygrad.ml
+  url: https://lemmygrad.ml/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.one
+  url: https://lemmy.one/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.blahaj.zone
+  url: https://lemmy.blahaj.zone/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: programming.dev
+  url: https://programming.dev/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.ca
+  url: https://lemmy.ca/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: discuss.tchncs.de
+  url: https://discuss.tchncs.de/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: reddthat.com
+  url: https://reddthat.com/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: sopuli.xyz
+  url: https://sopuli.xyz/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: lemmy.sdf.org
+  url: https://lemmy.sdf.org/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: infosec.pub
+  url: https://infosec.pub/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: feddit.uk
+  url: https://feddit.uk/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: startrek.website
+  url: https://startrek.website/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: feddit.nl
+  url: https://feddit.nl/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: szmer.info
+  url: https://szmer.info/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: aussie.zone
+  url: https://aussie.zone/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: midwest.social
+  url: https://midwest.social/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
+- name: geddit.social
+  url: https://geddit.social/nodeinfo/2.0.json
+  interval: 20s
+  conditions:
+  - '[STATUS] == 200'
