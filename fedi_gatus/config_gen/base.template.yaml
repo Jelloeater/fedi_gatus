@@ -19,7 +19,9 @@ ui:
     link: https://github.com/Jelloeater/fedi_gatus
   - name: Contact me
     link: mailto:$email
-  - name: API
+  - name: Gatus API
+    link: https://$site_address/api/v1/endpoints/statuses
+  - name: DB API
     link: https://api.$site_address
 storage:
   type: postgres
