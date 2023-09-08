@@ -34,5 +34,6 @@ RUN tree /app
 # Create and switch to a new user
 RUN useradd --create-home appuser
 RUN chown appuser:appuser -R /app/
+RUN chmod a+rwx -R -R /app/
 USER appuser
 ENV PYTHONPATH "${PYTHONPATH}:/fedi_gatus"

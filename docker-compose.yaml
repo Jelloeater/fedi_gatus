@@ -2,6 +2,7 @@ version: '3.7'
 volumes:
   caddy_data:
   caddy_config:
+  gatus_config:
   gatus_data:
   monitoring_data:
 
@@ -12,7 +13,7 @@ services:
       - gatus_db
     image: twinproduction/gatus:latest
     volumes:
-      - ./config:/config
+      - gatus_config:/config
 
   # Caddy Proxy
   caddy:
@@ -53,7 +54,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./config:/app/fedi_gatus/config_gen/config
+      - gatus_config:/app/fedi_gatus/config_gen/config:rw
       #- monitoring_data:/data
     entrypoint: [ "python3", "fedi_gatus/config_gen" ]
 
