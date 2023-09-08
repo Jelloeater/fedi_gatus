@@ -31,10 +31,9 @@ RUN poetry install --no-interaction --no-root --without test
 COPY . .
 RUN tree /app
 #RUN pip install -e .
-# TODO Switch this to run as user,
 # Create and switch to a new user
-#RUN useradd --create-home appuser
-#RUN chown appuser:appuser -R /app/
-#USER appuser
-#RUN chmod a+rwx -R /app/
+RUN useradd --create-home appuser
+RUN chown appuser:appuser -R /app/
+RUN chmod a+rwx -R -R /app/
+USER appuser
 ENV PYTHONPATH "${PYTHONPATH}:/fedi_gatus"

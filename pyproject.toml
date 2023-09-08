@@ -1,20 +1,17 @@
 [tool.poetry]
 name = "fedi_gatus"
 version = "0.1.0"
-description = "Gatus based Fediverse monitoring"
+description = ""
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 readme = "README.md"
-homepage = "https://github.com/Jelloeater/fedi_gatus"
-keywords = ["lemmy", "gatus","fastapi"]
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Environment :: No Input/Output (Daemon)",
-    "Topic :: System :: Monitoring",
-    "Intended Audience :: Information Technology",
-    "Operating System :: POSIX :: Linux",
-    "Programming Language :: Python",
-    "Natural Language :: English"
-]
+#homepage = "https://github.com/Jelloeater/xx"
+#keywords = ["hubitat", "makerapi","requests"]
+#classifiers = ["Development Status :: 5 - Production/Stable",
+# "Environment :: No Input/Output (Daemon)",
+# "Topic :: Home Automation",
+# "Intended Audience :: Developers",
+# "Operating System :: OS Independent",
+#]
 
 [tool.poetry.scripts]
 gatus_config = "fedi_gatus.__main__:app"
