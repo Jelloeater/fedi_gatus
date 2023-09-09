@@ -61,6 +61,9 @@ tasks:
     install:
       - pip install . --upgrade
     build:
+      - poetry version $(git describe --tags --abbrev=0)
+      - git-changelog -p -a -x >> CHANGELOG.md
+      - git add CHANGELOG.md
       - docker-compose build --no-cache --pull --progress=plain
     run:
       - docker-compose build
@@ -68,3 +71,16 @@ tasks:
       - docker-compose up updater # Block for config setup
       - docker-compose up config
       - docker-compose up -d caddy
+    publish:
+        -   task: security
+        -   task: build
+        - poetry publish
+    build_poetry:
+        env:
+            PIPENV_IGNORE_VIRTUALENVS: 1
+        deps: [ docs, clean ]
+        cmds:
+            - poetry version $(git describe --tags --abbrev=0)
+            - git-changelog -p -a -x >> CHANGELOG.md
+            - git add CHANGELOG.md
+            - poetry build
