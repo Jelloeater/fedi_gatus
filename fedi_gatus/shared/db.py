@@ -73,8 +73,9 @@ class DbAccess(Model):
         return self.select().get()
 
     def get_top_lemmy_instances(self, count=25) -> list[Model]:
+        # TODO Add env var for count
         logging.info("Number of Rows:" + str(DbAccess.select().count()))
-        d = DbAccess.select().where(DbAccess.software_name == "Lemmy").limit(count)
+        d = DbAccess.select().where(DbAccess.software_name == "Lemmy").order_by(DbAccess.stats_monthly_active_users).limit(count)
         info = []
         for i in d:
             info.append(i)
