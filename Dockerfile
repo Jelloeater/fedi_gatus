@@ -32,8 +32,9 @@ COPY . .
 RUN tree /app
 #RUN pip install -e .
 # Create and switch to a new user
-RUN useradd --create-home appuser
-RUN chown appuser:appuser -R /app/
-RUN chmod a+rwx -R -R /app/
-USER appuser
+# TODO Switch to non-root at some point
+#RUN useradd --create-home appuser
+#RUN chown appuser:appuser -R /app/
+#RUN chmod a+rwx -R -R /app/
+#USER appuser
 ENV PYTHONPATH "${PYTHONPATH}:/fedi_gatus"
