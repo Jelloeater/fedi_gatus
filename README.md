@@ -32,6 +32,7 @@ gatus --store data in--> gatus_postgres
 ```
 
 # Usage
+** The Caddy file in this repo is just for local dev, see the cloud init script for how to run in prod
 - Install gotask
 - Fill out .env.example and rename to .env
 - task run
