@@ -34,3 +34,6 @@ gatus --store data in--> gatus_postgres
 # Usage
 - Install gotask
 - task run
+
+# Cloud Deploy
+- See cloud-init.yaml.example for userdata deploy

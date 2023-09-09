@@ -1,0 +1,117 @@
+write_files:
+  - path: /root/.env
+    content: |
+      EMAIL=YOUR-EMAIL@here.tld
+      SITE_ADDRESS=example.org
+      LOG_LEVEL=10
+      POSTGRES_DB=gatus
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=CHANGE_ME
+      POSTGRES_HOSTNAME_GATUS=gatusdb
+      POSTGRES_HOSTNAME_MONITORING=monitoringdb
+      POSTGRES_DB_MONITORING=postgres
+
+  - path: /root/Caddyfile
+    content: |
+      https://{$SITE_ADDRESS}/* {
+          reverse_proxy http://gatus:9999
+      }
+      https://api.{$SITE_ADDRESS}/* {
+          reverse_proxy http://api:8888
+      }
+
+  - path: /root/docker-compose.yaml
+    content: |
+      version: '3.7'
+      volumes:
+        caddy_data:
+        caddy_config:
+        gatus_config:
+        gatus_data:
+        monitoring_data:
+
+      services:
+        #Monitor
+        gatus:
+          depends_on:
+            - gatus_db
+          image: twinproduction/gatus:latest
+          volumes:
+            - gatus_config:/config
+
+        # Caddy Proxy
+        caddy:
+          depends_on:
+            - api
+            - gatus
+          env_file: .env
+          image: caddy:latest
+          restart: unless-stopped
+          ports:
+            - 80:80
+            - 443:443
+            - 443:443/udp
+          volumes:
+          - $PWD/Caddyfile:/etc/caddy/Caddyfile
+          - caddy_data:/data
+          - caddy_config:/config
+
+        api:
+          environment:
+            - DOCKER=1
+          depends_on:
+            - monitoring_db
+            - gatus_db
+          env_file: .env
+          image: ghcr.io/jelloeater/fedi_gatus:latest
+          entrypoint: [ "python3", "fedi_gatus/api_server/__main__.py" ]
+
+        config:
+          depends_on:
+            - monitoring_db
+          env_file: .env
+          environment:
+            - DOCKER=1
+          image: ghcr.io/jelloeater/fedi_gatus:latest
+          volumes:
+            - gatus_config:/app/fedi_gatus/config_gen/config:rw
+          entrypoint: [ "python3", "fedi_gatus/config_gen" ]
+
+        gatus_db:
+          hostname: gatusdb
+          image: postgres
+          env_file: .env
+          volumes:
+            - gatus_data:/var/lib/postgresql/data
+          healthcheck:
+            test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+            interval: 10s
+            timeout: 3s
+            retries: 3
+
+        monitoring_db:
+          hostname: monitoringdb
+          image: postgres
+          env_file: .env
+          volumes:
+            - gatus_data:/var/lib/postgresql/data
+          healthcheck:
+            test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+            interval: 10s
+            timeout: 3s
+            retries: 3
+        updater:
+          environment:
+            - DOCKER=1
+          depends_on:
+            - monitoring_db
+          env_file: .env
+          image: ghcr.io/jelloeater/fedi_gatus:latest
+          entrypoint: [ "python3", "fedi_gatus/updater" ]
+
+runcmd:
+  - cd /root
+  - docker-compose up -d monitoring_db
+  - docker-compose up updater # Block for config setup
+  - docker-compose up config
+  - docker-compose up -d caddy
