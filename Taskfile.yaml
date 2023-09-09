@@ -50,6 +50,7 @@ tasks:
             - poetry run isort --atomic . # Sort imports
             - poetry run black . # Format code
             - poetry run flake8
+            - poetry version $(git describe --tags --abbrev=0)
     docs:
         silent: false
         interactive: false
@@ -58,6 +59,8 @@ tasks:
             - poetry run pdoc3 {{.BUILD_DIR}} -o docs -f
             - poetry run pyreverse {{.BUILD_DIR}} -d docs
             - git add docs
+            - git-changelog -p -a -x >> CHANGELOG.md
+            - git add CHANGELOG.md
     install:
       - pip install . --upgrade
     build:
@@ -80,7 +83,4 @@ tasks:
             PIPENV_IGNORE_VIRTUALENVS: 1
         deps: [ docs, clean ]
         cmds:
-            - poetry version $(git describe --tags --abbrev=0)
-            - git-changelog -p -a -x >> CHANGELOG.md
-            - git add CHANGELOG.md
             - poetry build
