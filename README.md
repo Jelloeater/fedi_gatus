@@ -33,6 +33,7 @@ gatus --store data in--> gatus_postgres
 
 # Usage
 - Install gotask
+- Fill out .env.example and rename to .env
 - task run
 
 # Cloud Deploy
