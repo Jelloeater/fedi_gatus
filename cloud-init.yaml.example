@@ -10,6 +10,7 @@ write_files:
       POSTGRES_HOSTNAME_GATUS=gatusdb
       POSTGRES_HOSTNAME_MONITORING=monitoringdb
       POSTGRES_DB_MONITORING=postgres
+      NUMBER_OF_SERVERS=50
 
   - path: /root/Caddyfile
     content: |
