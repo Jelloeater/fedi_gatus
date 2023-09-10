@@ -4,6 +4,7 @@ vars:
 tasks:
     default:
         - task: test
+        - task: commit
     test:
         silent: false
         interactive: false

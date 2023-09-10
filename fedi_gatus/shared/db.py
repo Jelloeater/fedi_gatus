@@ -72,14 +72,17 @@ class DbAccess(Model):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_lemmy_instances(self) -> list[Model]:
-        NUMBER_OF_SERVERS = int(os.getenv("NUMBER_OF_SERVERS"))
+    def get_top_lemmy_instances(self, count=25) -> list[Model]:
+        # TODO Add env var for count
+
+        if not os.getenv("TEST_MODE"):
+            count = int(os.getenv("NUMBER_OF_SERVERS"))
         logging.info("Number of Rows:" + str(DbAccess.select().count()))
         d = (
             DbAccess.select()
             .where(DbAccess.software_name == "Lemmy")
             .order_by(DbAccess.stats_monthly_active_users)
-            .limit(NUMBER_OF_SERVERS)
+            .limit(count)
         )
         info = []
         for i in d:
