@@ -71,7 +71,7 @@ Classes
     `get_single_record(self) ‑> dict`
     :
 
-    `get_top_lemmy_instances(self, count=25) ‑> list[fedi_gatus.shared.db.Model]`
+    `get_top_lemmy_instances(self) ‑> list[fedi_gatus.shared.db.Model]`
     :
 
     `initialize(self)`
