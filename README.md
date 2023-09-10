@@ -5,7 +5,8 @@
 
 
 - Utility program to pull Lemmy data and generate a Gatus YAML file
-
+- Powers https://lemmy-status.org/
+- If you have questions or problems deploying feel free to contact me via links in my GH Profile
 
 ```mermaid
 flowchart
@@ -31,11 +32,14 @@ config_gen
 gatus --store data in--> gatus_postgres
 ```
 
-# Usage
+# 🦾 Usage 🦾
 ** The Caddy file in this repo is just for local dev, see the cloud init script for how to run in prod
 - Install gotask
 - Fill out .env.example and rename to .env
 - task run
+- ???
+- PROFIT!
 
-# Cloud Deploy
+# ☁ Cloud Deploy ☁
 - See cloud-init.yaml.example for userdata deploy
+- You will need to have docker and docker compose installed 🙃
