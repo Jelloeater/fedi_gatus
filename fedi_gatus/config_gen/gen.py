@@ -61,7 +61,7 @@ def generate_full_config():
 
 def generate_top_instances():
     logging.info("Get top instances")
-    d = db.DbAccess().get_top_lemmy_instances()
+    d = db.DbAccess().get_top_instances()
     instances = []
     for i in d:  # TODO not in order by user count
         url = "https://" + i.domain
