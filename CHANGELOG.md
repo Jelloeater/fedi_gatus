@@ -2,6 +2,12 @@
 n.n.n / 2023-09-09
 ==================
 
+
+
+v1.0.1 / 2023-09-09
+===================
+
+  * fix: Fixed test suite for missing env var
   * doc: Updated changelog and readme
 
 v1.0.0 / 2023-09-09
