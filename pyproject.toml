@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fedi_gatus"
-version = "v1.0.0"
+version = "v1.0.1"
 description = ""
 authors = ["Jesse Schoepfer <jelloeater@gmail.com>"]
 readme = "README.md"

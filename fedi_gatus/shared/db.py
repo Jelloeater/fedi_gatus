@@ -81,7 +81,7 @@ class DbAccess(Model):
         d = (
             DbAccess.select()
             .where(DbAccess.software_name == "Lemmy")
-            .order_by(DbAccess.stats_monthly_active_users)
+            .order_by(DbAccess.stats_monthly_active_users.desc())
             .limit(count)
         )
         info = []
