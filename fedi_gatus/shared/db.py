@@ -74,7 +74,7 @@ class DbAccess(Model):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_lemmy_instances(self, count=25) -> list[Model]:
+    def get_top_instances(self, software_name='Lemmy', count=25) -> list[Model]:
         # TODO Add env var for count
 
         if not os.getenv("TEST_MODE"):
@@ -82,7 +82,7 @@ class DbAccess(Model):
         logging.info("Number of Rows:" + str(DbAccess.select().count()))
         d = (
             DbAccess.select()
-            .where(DbAccess.software_name == "Lemmy")
+            .where(DbAccess.software_name == software_name)
             .order_by(DbAccess.stats_monthly_active_users.desc())
             .limit(count)
         )
