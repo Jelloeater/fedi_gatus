@@ -4,7 +4,8 @@ import os
 
 import peewee as p
 
-
+# TODO May need to do https://fastapi.tiangolo.com/how-to/sql-databases-peewee/
+# https://stackoverflow.com/questions/39803746/peewee-and-peewee-async-why-is-async-slower
 def get_connection():
     DOCKER_VOLUME = "/data"
     logging.info(os.getcwd())
