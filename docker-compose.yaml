@@ -60,7 +60,7 @@ services:
 
   gatus_db:
     hostname: gatusdb
-    image: postgres
+    image: postgres:15.4
     env_file: .env
     volumes:
       - gatus_data:/var/lib/postgresql/data
@@ -74,7 +74,7 @@ services:
 
   monitoring_db:
     hostname: monitoringdb
-    image: postgres
+    image: postgres:15.4
     env_file: .env
     volumes:
       - gatus_data:/var/lib/postgresql/data
