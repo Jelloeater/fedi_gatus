@@ -5,10 +5,10 @@ ui:
   description: Lemmy Status montoring. The nodes monitored on this page are generated dynamically based on ACTIVE user count.
   header: Public Instance Health / Statistics
   logo: https://upload.wikimedia.org/wikipedia/commons/9/93/Fediverse_logo_proposal.svg
-  link: https://join-lemmy.org
+  link: https://github.com/maltfield/awesome-lemmy-instances
   buttons:
-  - name: Join Lemmy
-    link: https://join-lemmy.org
+  - name: AwesomeLemmy Listings
+    link: https://github.com/maltfield/awesome-lemmy-instances
   - name: Lemmy Instances
     link: https://fedidb.org/software/lemmy
   - name: Lemmy Map

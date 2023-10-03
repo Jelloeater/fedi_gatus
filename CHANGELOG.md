@@ -1,8 +1,9 @@
 
-n.n.n / 2023-09-10
+n.n.n / 2023-10-02
 ==================
 
-
+  * doc: Added PeeWee Info
+  * version bump
 
 v1.0.2 / 2023-09-10
 ===================
@@ -103,6 +104,10 @@ v0.1.0 / 2023-09-09
   * wip: module refactor
   * doc: Started on dependency graph
   * wip: Started on seperate docker workers
+
+orig / 2023-07-06
+=================
+
   * wip: Started on AIO repo
   * doc: Added todo note
   * wip: Started on DB for storage
