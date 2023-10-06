@@ -11,6 +11,13 @@ class Worker:
     raw_data = None
 
     def get_raw_data(self):
+        # TODO Add Fediseer data to DB
+        fediseer_data = requests.get(url="https://fediseer.com/api/v1/whitelist",
+                     params={"endorsements": 1, "limit": 999, "page": 1}, timeout=10).json()
+
+        site='lemmy.world'
+        single = requests.get(url=f"https://fediseer.com/api/v1/whitelist/{site}",
+                                     params={"endorsements": 1, "limit": 999, "page": 1}, timeout=10).json()
         data = []
 
         rest_data = requests.get(url="https://api.fedidb.org/v1/servers/", params={"limit": 40}, timeout=3).json()
