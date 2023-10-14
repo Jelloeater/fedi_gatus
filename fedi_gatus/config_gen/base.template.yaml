@@ -17,6 +17,8 @@ ui:
     link: https://lemmyverse.net/communities
   - name: GitHub
     link: https://github.com/Jelloeater/fedi_gatus
+  - name: Matrix Chat
+    link: https://matrix.to/#/#lemmy-status:matrix.org
   - name: Contact me
     link: mailto:$email
   - name: API
