@@ -13,7 +13,7 @@ dotenv.load_dotenv()
 import os
 
 os.environ["SQL_LITE"] = "1"
-os.environ["TEST_MODE"] = "1"
+# os.environ["TEST_MODE"] = "1"
 
 
 class TestData:
