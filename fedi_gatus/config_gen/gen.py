@@ -1,5 +1,6 @@
 import logging
 
+import requests
 import yaml
 
 from fedi_gatus.shared import db
@@ -63,11 +64,12 @@ def generate_top_instances():
     logging.info("Get top instances")
     from pythonseer import Fediseer
     f = Fediseer()
-    fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
+    # fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
+    # TODO Ask dbo about adding params to library
+    # https://github.com/Fediseer/pythonseer/issues/7
 
-    d = []
-    for i in fediseer_data:
-        d.append(i['domain'])
+    d = requests.get(url='https://fediseer.com/api/v1/whitelist',
+                 params={'endorsements': 3, 'guarantors': 4, 'software_csv': 'lemmy', 'limit': 100, 'domains': True}).json()['domains']
 
     # d = db.DbAccess().get_top_instances() # FIXME Backend is only returning a very small set of data... funnnnnn
     instances = []
