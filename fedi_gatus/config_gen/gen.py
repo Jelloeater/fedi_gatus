@@ -63,7 +63,7 @@ def generate_top_instances():
     logging.info("Get top instances")
     from pythonseer import Fediseer
     f = Fediseer()
-    fediseer_data = f.whitelist.get(guarantors=1, endorsements=3)['instances']
+    fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
 
     d = []
     for i in fediseer_data:
