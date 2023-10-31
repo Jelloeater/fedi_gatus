@@ -8,6 +8,10 @@
 - Powers https://lemmy-status.org/
 - If you have questions or problems deploying feel free to contact me via links in my GH Profile
 
+> ==FIXME==
+> 
+> **Well the orig API backend is only returning like 4 results... so Imma just gonna hit up db0, cause he's a cool dude ;-)**
+
 ```mermaid
 flowchart
 docker_compose 

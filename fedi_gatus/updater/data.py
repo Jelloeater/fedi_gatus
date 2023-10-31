@@ -5,14 +5,13 @@ import peewee
 import requests
 
 from fedi_gatus.shared import db
-
+from pythonseer import Fediseer
 
 class Worker:
     raw_data = None
 
     def get_raw_data(self):
         data = []
-
         rest_data = requests.get(url="https://api.fedidb.org/v1/servers/", params={"limit": 40}, timeout=3).json()
         for i in rest_data["data"]:
             data.append(i)

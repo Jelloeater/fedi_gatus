@@ -61,9 +61,17 @@ def generate_full_config():
 
 def generate_top_instances():
     logging.info("Get top instances")
-    d = db.DbAccess().get_top_lemmy_instances()
+    from pythonseer import Fediseer
+    f = Fediseer()
+    fediseer_data = f.whitelist.get(guarantors=1, endorsements=3)['instances']
+
+    d = []
+    for i in fediseer_data:
+        d.append(i['domain'])
+
+    # d = db.DbAccess().get_top_instances() # FIXME Backend is only returning a very small set of data... funnnnnn
     instances = []
     for i in d:  # TODO not in order by user count
-        url = "https://" + i.domain
-        instances.append({"name": f"{i.domain}", "url": url})
+        url = "https://" + i
+        instances.append({"name": f"{i}", "url": url})
     return instances

@@ -13,7 +13,7 @@ dotenv.load_dotenv()
 import os
 
 os.environ["SQL_LITE"] = "1"
-os.environ["TEST_MODE"] = "1"
+# os.environ["TEST_MODE"] = "1"
 
 
 class TestData:
@@ -47,7 +47,7 @@ class TestDB:
     @classmethod
     def test_db_get_top(cls):
         d = db.DbAccess()
-        r = d.get_top_lemmy_instances()
+        r = d.get_top_instances()
         assert r is not None
 
     @classmethod
@@ -58,7 +58,7 @@ class TestDB:
         d = db.DbAccess()
         d.drop_table()  # Clear table
         d.create_table()
-        r = d.get_top_lemmy_instances()
+        r = d.get_top_instances()
         end = time.time()
         logging.debug(end - start)
         assert r is not None
