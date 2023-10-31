@@ -9,16 +9,16 @@
 - If you have questions or problems deploying feel free to contact me via links in my GH Profile
 
 > ==FIXME==
-> 
+>
 > **Well the orig API backend is only returning like 4 results... so Imma just gonna hit up db0, cause he's a cool dude ;-)**
 
 ```mermaid
 flowchart
-docker_compose 
+docker_compose
 --creates--> api_server & caddy & config_gen & data_updater
 
-caddy 
---serves--> gatus & api_server 
+caddy
+--serves--> gatus & api_server
 
 data_updater
 --updated records in --> db
@@ -28,9 +28,9 @@ api_server
 
 
 config_gen
---pulls data from --> db
+--pulls data from --> db0
 
-config_gen 
+config_gen
 --creates config for--> gatus
 
 gatus --store data in--> gatus_postgres
