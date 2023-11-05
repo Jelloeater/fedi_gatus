@@ -3,6 +3,7 @@
 [![CodeQL](https://github.com/Jelloeater/fedi_gatus/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Jelloeater/fedi_gatus/actions/workflows/codeql.yml)
 [![GitHub](https://img.shields.io/github/license/Jelloeater/fedi_gatus)](https://github.com/Jelloeater/fedi_gatus/blob/main/LICENSE)
 
+**FYI Using https://github.com/Fediseer/fediseer for data backend for now**
 
 - Utility program to pull Lemmy data and generate a Gatus YAML file
 - Powers https://lemmy-status.org/
