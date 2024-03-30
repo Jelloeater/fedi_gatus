@@ -61,15 +61,27 @@ def generate_full_config():
 
 
 def generate_top_instances():
+    import os
+
     logging.info("Get top instances")
     from pythonseer import Fediseer
+
     f = Fediseer()
     # fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
     # TODO Ask dbo about adding params to library
     # https://github.com/Fediseer/pythonseer/issues/7
 
-    d = requests.get(url='https://fediseer.com/api/v1/whitelist', timeout=60,
-                 params={'endorsements': 3, 'guarantors': 4, 'software_csv': 'lemmy', 'limit': 100, 'domains': True}).json()['domains']
+    d = requests.get(
+        url="https://fediseer.com/api/v1/whitelist",
+        timeout=60,
+        params={
+            "endorsements": int(os.getenv("ENDORSEMENTS")),
+            "guarantors": int(os.getenv("GUARANTORS")),
+            "software_csv": "lemmy",
+            "limit": int(os.getenv("NUMBER_OF_SERVERS")),
+            "domains": True,
+        },
+    ).json()["domains"]
 
     # d = db.DbAccess().get_top_instances() # FIXME Backend is only returning a very small set of data... funnnnnn
     instances = []
