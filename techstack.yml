@@ -1,0 +1,116 @@
+repo_name: Jelloeater/fedi_gatus
+report_id: 7f5389d6a9bb33ec7e04a3e9db38cb66
+version: 0.1
+repo_type: Public
+timestamp: '2024-06-07T17:43:57+00:00'
+requested_by: Jelloeater
+provider: github
+branch: main
+detected_tools_count: 9
+tools:
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus
+  detection_source: Repo Metadata
+- name: DB
+  description: 'Version control for databases: save, restore, and archive snapshots
+    of your database from the command line'
+  website_url: https://github.com/infostreams/db
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/11593/no-img.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/docker-compose.yaml
+  detection_source: docker-compose.yaml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-07-06 06:40:25.000000000 Z
+- name: PostgreSQL
+  description: A powerful, open source object-relational database system
+  website_url: http://www.postgresql.org/
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/docker-compose.yaml
+  detection_source: docker-compose.yaml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-07-30 21:36:41.000000000 Z
+- name: Caddy
+  description: The Ultimate Server with Automatic HTTPS
+  website_url: https://caddyserver.com/
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Web Servers
+  image_url: https://img.stackshare.io/service/3834/caddy.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/docker-compose.yaml
+  detection_source: docker-compose.yaml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-07-29 21:17:04.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/.github/workflows/Run-TODO-to-Issue.yml
+  detection_source: ".github/workflows/Run-TODO-to-Issue.yml"
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-08-21 02:43:23.000000000 Z
+- name: HAProxy
+  description: The Reliable, High Performance TCP/HTTP Load Balancer
+  website_url: http://www.haproxy.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Load Balancer / Reverse Proxy
+  image_url: https://img.stackshare.io/service/1179/preview.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/docker-compose.yaml
+  detection_source: docker-compose.yaml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-07-29 21:17:04.000000000 Z
+- name: Alt
+  description: A library for managing data within JavaScript applications
+  website_url: https://alt.js.org/
+  open_source: false
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/3649/default_01276c9c0c79674b16f9b29216bd8cc7ce9b894d.png
+  detection_source_url: https://github.com/Jelloeater/fedi_gatus/blob/main/docker-compose.yaml
+  detection_source: docker-compose.yaml
+  last_updated_by: Jesse Schoepfer
+  last_updated_on: 2023-07-06 06:40:25.000000000 Z
