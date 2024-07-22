@@ -17,7 +17,7 @@ readme = "README.md"
 gatus_config = "fedi_gatus.__main__:app"
 
 [tool.poetry.dependencies]
-python = "3.11"
+python = "~3.11"
 typer = "*"
 pyyaml = "*"
 ruamel-yaml = "*"
@@ -28,6 +28,7 @@ uvicorn ={version="0.22.0", extras = ["standard"]}
 munch = "^4.0.0"
 psycopg2-binary = "^2.9.7"
 pythonseer = {git = "https://github.com/jelloeater/pythonseer"}
+pytest = "^8.3.1"
 
 
 [tool.pytest.ini_options]
