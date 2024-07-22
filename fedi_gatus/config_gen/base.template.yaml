@@ -7,8 +7,6 @@ ui:
   logo: https://upload.wikimedia.org/wikipedia/commons/9/93/Fediverse_logo_proposal.svg
   link: https://github.com/maltfield/awesome-lemmy-instances
   buttons:
-  - name: AwesomeLemmy Listings
-    link: https://github.com/maltfield/awesome-lemmy-instances
   - name: Lemmy Instances
     link: https://fedidb.org/software/lemmy
   - name: Lemmy Map
