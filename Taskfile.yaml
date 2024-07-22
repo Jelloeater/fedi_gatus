@@ -10,7 +10,6 @@ tasks:
         interactive: false
         cmds:
             - poetry install
-            - task: security
             - task: pytest
     commit:
         # Run all actions at same time
@@ -20,9 +19,10 @@ tasks:
             -   task: docs
 
     setup:
-        - python3 -m pip install pipx
-        - python3 -m pipx ensurepath
-        - pipx install poetry
+        - sudo apt-get install python3.11
+        - python3.11 -m pip install pipx
+        - python3.11 -m pipx ensurepath
+        - python3.11 -m pipx install poetry
         - poetry install
     clean:
         - rm -rf dist
