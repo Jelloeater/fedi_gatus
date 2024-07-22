@@ -17,7 +17,7 @@ readme = "README.md"
 gatus_config = "fedi_gatus.__main__:app"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "3.11"
 typer = "*"
 pyyaml = "*"
 ruamel-yaml = "*"
