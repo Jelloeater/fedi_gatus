@@ -33,8 +33,8 @@ tasks:
     security:
         - poetry run whispers {{.BUILD_DIR}} # Check for security issues
         - poetry run bandit --silent -r {{.BUILD_DIR}}
-        - pipx install tartufo
-        - tartufo scan-local-repo .
+        - python3.10 -m pip install tartufo # Only works on 3.10
+        - python3.10 -m tartufo scan-local-repo .
     pytest:
         silent: false
         interactive: false

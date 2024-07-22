@@ -79,6 +79,7 @@ exclude-entropy-patterns = [
     {path-pattern = 'Pipfile\.lock', pattern = '.'},
     {path-pattern = 'README\.md', pattern = '.'},
     {path-pattern = 'mapping\.cfg', pattern = '.'}, # Git secret
+    {path-pattern = 'techstack\.*', pattern = '.'},
 ]
 
 [tool.poetry.group.test.dependencies]
