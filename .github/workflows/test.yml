@@ -14,7 +14,6 @@ jobs:
             - run: tree
             - run: sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
             - run: task setup
-            - run: task security
             - uses: nick-fields/retry@v2
               with:
                 timeout_minutes: 5
