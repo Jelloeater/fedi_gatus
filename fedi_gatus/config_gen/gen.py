@@ -1,4 +1,5 @@
 import logging
+import math
 
 import requests
 import yaml
@@ -71,17 +72,33 @@ def generate_top_instances():
     # TODO Ask dbo about adding params to library
     # https://github.com/Fediseer/pythonseer/issues/7
 
-    d = requests.get(
-        url="https://fediseer.com/api/v1/whitelist",
-        timeout=60,
-        params={
-            "endorsements": int(os.getenv("ENDORSEMENTS")),
-            "guarantors": int(os.getenv("GUARANTORS")),
-            "software_csv": "lemmy",
-            "limit": int(os.getenv("NUMBER_OF_SERVERS")),
-            "domains": True,
-        },
-    ).json()["domains"]
+    # Batch requests in 100 increments
+
+    d = []
+    i = 0
+    while True:
+        if i >= int(os.getenv("NUMBER_OF_SERVERS")):
+            break
+        next = max(min(100, int(os.getenv("NUMBER_OF_SERVERS")) - i), 0)
+        i += next
+        response = requests.get(
+            url="https://fediseer.com/api/v1/whitelist",
+            timeout=60,
+            params={
+                "endorsements": 1,
+                "guarantors": 1,
+                "software_csv": "lemmy",
+                "limit": next,
+                "domains": True,
+            },
+        )
+
+        if response.status_code == 200:
+            d += response.json()["domains"]
+        else:
+            logging.error(response.json())
+            logging.error(response.status_code)
+            break
 
     # d = db.DbAccess().get_top_instances() # FIXME Backend is only returning a very small set of data... funnnnnn
     instances = []
