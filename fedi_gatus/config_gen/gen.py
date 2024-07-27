@@ -1,10 +1,10 @@
 import logging
+import math
 
 import requests
 import yaml
 
-# import math
-# from fedi_gatus.shared import db
+from fedi_gatus.shared import db
 
 
 class Endpoint:
@@ -65,9 +65,9 @@ def generate_top_instances():
     import os
 
     logging.info("Get top instances")
-    # from pythonseer import Fediseer
+    from pythonseer import Fediseer
 
-    # f = Fediseer()
+    f = Fediseer()
     # fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
     # TODO Ask dbo about adding params to library
     # https://github.com/Fediseer/pythonseer/issues/7
@@ -76,6 +76,7 @@ def generate_top_instances():
 
     d = []
     i = 0
+    page = 1
     while True:
         if i >= int(os.getenv("NUMBER_OF_SERVERS")):
             break
@@ -89,9 +90,11 @@ def generate_top_instances():
                 "guarantors": 1,
                 "software_csv": "lemmy",
                 "limit": next,
+                "page": page,
                 "domains": True,
             },
         )
+        page += 1
 
         if response.status_code == 200:
             d += response.json()["domains"]
