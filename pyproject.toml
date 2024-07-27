@@ -23,7 +23,7 @@ pyyaml = "*"
 ruamel-yaml = "*"
 peewee = "*"
 datetime = "*"
-fastapi = "0.96.0"
+fastapi = "0.109.1"
 uvicorn ={version="0.22.0", extras = ["standard"]}
 munch = "^4.0.0"
 psycopg2-binary = "^2.9.7"
