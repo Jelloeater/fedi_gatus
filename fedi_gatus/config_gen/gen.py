@@ -77,11 +77,13 @@ def generate_top_instances():
     d = []
     i = 0
     page = 1
+    limit = int(os.getenv("NUMBER_OF_SERVERS")) if int(os.getenv("NUMBER_OF_SERVERS")) < 100 else 100
     while True:
         if i >= int(os.getenv("NUMBER_OF_SERVERS")):
+            if i > int(os.getenv("NUMBER_OF_SERVERS")):
+                d = d[: int(os.getenv("NUMBER_OF_SERVERS"))]
             break
-        next = max(min(100, int(os.getenv("NUMBER_OF_SERVERS")) - i), 0)
-        i += next
+        i += limit
         response = requests.get(
             url="https://fediseer.com/api/v1/whitelist",
             timeout=60,
@@ -89,7 +91,7 @@ def generate_top_instances():
                 "endorsements": 1,
                 "guarantors": 1,
                 "software_csv": "lemmy",
-                "limit": next,
+                "limit": limit,
                 "page": page,
                 "domains": True,
             },
