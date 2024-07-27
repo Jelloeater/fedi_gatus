@@ -4,19 +4,15 @@ Module fedi_gatus.config_gen.gen
 Functions
 ---------
 
-    
 `Generate_endpoints(endpoint_list: [<class 'dict'>])`
 :   
 
-    
 `generate_full_config()`
 :   
 
-    
 `generate_top_instances()`
 :   
 
-    
 `generate_ui()`
 :   
 

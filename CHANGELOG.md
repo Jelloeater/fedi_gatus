@@ -1,7 +1,51 @@
 
-n.n.n / 2023-10-02
+n.n.n / 2024-07-27
 ==================
 
+  * Batch request handling for whitelist API
+  * Removed security from GH Actions
+
+v2.1.2 / 2024-07-22
+===================
+
+  * Fixe security suite
+  * Fix test suite
+
+v2.1.1 / 2024-07-22
+===================
+
+  * Updatd poetry to use 3.11
+  * Updated deps
+  * Bump Python version to 3.11
+
+2.1.0 / 2024-03-29
+==================
+
+  * Added dynamic number of servers
+  * Update README.md
+  * Added timeout to GET
+
+v2.0.1 / 2023-10-31
+===================
+
+  * Swapped out for requests
+  * Adjusted get limit
+
+v2.0.0 / 2023-10-31
+===================
+
+  * Merge branch 'feat/fediseer'
+  * doc: Updated readme
+  * hack: Swapped data sources
+  * Added Fediseer pull
+  * wip: Started on fediseer db injection
+  * wip: Started on API function
+  * Added Matrix Chat link
+
+v1.0.3 / 2023-10-02
+===================
+
+  * Updated title bar
   * doc: Added PeeWee Info
   * version bump
 
@@ -104,10 +148,6 @@ v0.1.0 / 2023-09-09
   * wip: module refactor
   * doc: Started on dependency graph
   * wip: Started on seperate docker workers
-
-orig / 2023-07-06
-=================
-
   * wip: Started on AIO repo
   * doc: Added todo note
   * wip: Started on DB for storage

@@ -4,7 +4,6 @@ Module fedi_gatus.shared.db
 Functions
 ---------
 
-    
 `get_connection()`
 :   
 
@@ -66,12 +65,14 @@ Classes
     `stats_user_count`
     :
 
+    ### Static methods
+
+    `get_top_instances(software_name='Lemmy', count=25) ‑> list[fedi_gatus.shared.db.Model]`
+    :
+
     ### Methods
 
     `get_single_record(self) ‑> dict`
-    :
-
-    `get_top_lemmy_instances(self, count=25) ‑> list[fedi_gatus.shared.db.Model]`
     :
 
     `initialize(self)`

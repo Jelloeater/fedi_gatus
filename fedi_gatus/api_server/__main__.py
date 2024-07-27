@@ -34,7 +34,9 @@ class web_app:
         async def healthcheck():
             pass
             # TODO Write health check endpoint
-        #TODO Add top instance query function and JSON return
+
+        # TODO Add top instance query function and JSON return
+
 
 class Server:
     port = 8888

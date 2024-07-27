@@ -5,7 +5,9 @@ import peewee
 import requests
 
 from fedi_gatus.shared import db
-from pythonseer import Fediseer
+
+# from pythonseer import Fediseer
+
 
 class Worker:
     raw_data = None
@@ -40,6 +42,7 @@ class Worker:
             except peewee.IntegrityError as e:
                 logging.error(e)
 
-    def initialize_db(self):
+    @staticmethod
+    def initialize_db():
         d = db.DbAccess()
         d.initialize()

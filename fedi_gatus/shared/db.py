@@ -74,7 +74,8 @@ class DbAccess(Model):
     def get_single_record(self) -> dict:
         return self.select().get()
 
-    def get_top_instances(self, software_name='Lemmy', count=25) -> list[Model]:
+    @staticmethod
+    def get_top_instances(software_name="Lemmy", count=25) -> list[Model]:
         # TODO Add env var for count
 
         if not os.getenv("TEST_MODE"):
