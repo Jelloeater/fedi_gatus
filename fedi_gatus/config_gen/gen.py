@@ -1,10 +1,10 @@
 import logging
-import math
 
 import requests
 import yaml
 
-from fedi_gatus.shared import db
+# import math
+# from fedi_gatus.shared import db
 
 
 class Endpoint:
@@ -65,9 +65,9 @@ def generate_top_instances():
     import os
 
     logging.info("Get top instances")
-    from pythonseer import Fediseer
+    # from pythonseer import Fediseer
 
-    f = Fediseer()
+    # f = Fediseer()
     # fediseer_data = f.whitelist.get(guarantors=3, endorsements=4)['instances']
     # TODO Ask dbo about adding params to library
     # https://github.com/Fediseer/pythonseer/issues/7

@@ -12,12 +12,14 @@ Classes
     `raw_data`
     :
 
+    ### Static methods
+
+    `initialize_db()`
+    :
+
     ### Methods
 
     `get_raw_data(self)`
-    :
-
-    `initialize_db(self)`
     :
 
     `insert_data(self)`
