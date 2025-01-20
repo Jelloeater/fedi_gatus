@@ -8,4 +8,23 @@ updates:
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    ignore:
+      - dependency-name: "setuptools"
+        versions: ["*"]
+      - dependency-name: "pytest"
+        versions: ["*"]
+      - dependency-name: "pytest-cov"
+        versions: ["*"]
+      - dependency-name: "pytest-pycharm"
+        versions: ["*"]
+      - dependency-name: "python-dotenv"
+        versions: ["*"]
+      - dependency-name: "typing_extensions"
+        versions: ["*"]
+      - dependency-name: "vulture"
+        versions: ["*"]
+      - dependency-name: "bandit"
+        versions: ["*"]
+      - dependency-name: "whispers"
+        versions: ["*"]
